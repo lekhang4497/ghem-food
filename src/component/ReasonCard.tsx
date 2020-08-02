@@ -5,7 +5,13 @@ import { faCarrot } from "@fortawesome/free-solid-svg-icons";
 import Constant from "../constant/Constant";
 
 const ReasonCard = () => (
-  <Box bgcolor={Constant.COLOR_PRIMARY_LIGHT_TRANS} borderRadius={5} p={4}>
+  <Box
+    bgcolor={Constant.COLOR_PRIMARY_LIGHT_TRANS}
+    borderRadius={5}
+    p={4}
+    border={1}
+    borderColor={Constant.COLOR_PRIMARY_LIGHT}
+  >
     <Box mb={3}>
       <FontAwesomeIcon
         icon={faCarrot}
