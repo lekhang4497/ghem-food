@@ -11,6 +11,7 @@ const ReasonCard = () => (
     p={4}
     border={1}
     borderColor={Constant.COLOR_PRIMARY_LIGHT}
+    fontFamily={Constant.FONT_FAMILY_MAIN}
   >
     <Box mb={3}>
       <FontAwesomeIcon
@@ -19,7 +20,7 @@ const ReasonCard = () => (
         color={Constant.COLOR_PRIMARY}
       />
     </Box>
-    <Box mb={3} fontWeight="bold" color={Constant.TEXT_DARK}>
+    <Box mb={3} fontWeight={600} color={Constant.TEXT_DARK}>
       Various Menu
     </Box>
     <Box color={Constant.TEXT_SECONDARY}>

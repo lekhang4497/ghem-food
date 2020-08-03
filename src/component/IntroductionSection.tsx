@@ -1,11 +1,14 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import { Button, Container, Link, Typography } from "@material-ui/core";
+import { Button, Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Constant from "../constant/Constant";
 import ReasonCard from "./ReasonCard";
 import FeatureMenu from "./FeatureMenu";
+import AppNav from "./AppNavbar";
+import ProductSection from "./ProductSection";
+import FooterSection from "./FooterSection";
 
 const useStyles = makeStyles({
   root: {
@@ -20,7 +23,7 @@ const useStyles = makeStyles({
     textTransform: "none",
   },
   title: {
-    fontFamily: "Open Sans",
+    fontFamily: Constant.FONT_FAMILY_MAIN,
     fontWeight: "bold",
     color: Constant.TEXT_DARK,
   },
@@ -54,54 +57,11 @@ const useStyles = makeStyles({
 
 const IntroductionSection = () => {
   const classes = useStyles();
-  const preventDefault = (event: React.SyntheticEvent) =>
-    event.preventDefault();
-
   return (
     <div>
       <Box className={classes.coverGradient}>
         <Box mb={8}>
-          <Container maxWidth="md">
-            <Box py={4}>
-              <Grid container justify="flex-end">
-                <Grid item md={6} container justify="flex-start">
-                  {/* Logo */}
-                  <Box
-                    color={Constant.COLOR_PRIMARY}
-                    fontFamily={"Lobster Two"}
-                    fontStyle={"italic"}
-                    fontWeight={"normal"}
-                    fontSize={64}
-                  >
-                    Ghém
-                  </Box>
-                </Grid>
-                <Grid item md={6} container alignItems="center">
-                  {/* Menu items*/}
-                  <Grid container spacing={6} justify="flex-end">
-                    <Grid item>
-                      <Link
-                        className={classes.menuItem}
-                        href="#"
-                        onClick={preventDefault}
-                      >
-                        Home
-                      </Link>
-                    </Grid>
-                    <Grid item>
-                      <Link
-                        className={classes.menuItem}
-                        href="#"
-                        onClick={preventDefault}
-                      >
-                        Menu
-                      </Link>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Box>
-          </Container>
+          <AppNav />
         </Box>
 
         <Box pb={8}>
@@ -114,23 +74,25 @@ const IntroductionSection = () => {
                   height="100%"
                   display="flex"
                 >
-                  <Typography
-                    className={classes.title}
-                    variant="h3"
-                    gutterBottom
-                    align="left"
+                  <Box
+                    fontFamily={Constant.FONT_FAMILY_MAIN}
+                    fontWeight="bold"
+                    color={Constant.TEXT_DARK}
+                    fontSize={48}
+                    textAlign="left"
+                    mb={3}
                   >
                     All in Good taste food with{" "}
                     <Box
                       component="span"
                       color={Constant.COLOR_PRIMARY}
-                      fontFamily={"Lobster Two"}
-                      fontStyle={"italic"}
-                      fontWeight={"normal"}
+                      fontFamily={Constant.FONT_FAMILY_BEAUTY}
+                      fontStyle="italic"
+                      fontWeight="normal"
                     >
                       Ghém
                     </Box>
-                  </Typography>
+                  </Box>
                   <Typography variant="subtitle1" gutterBottom align="left">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Quos blanditiis tenetur abc abc
@@ -158,9 +120,15 @@ const IntroductionSection = () => {
       <Box mb={16}>
         <Container maxWidth="md">
           <Box my={6}>
-            <Typography className={classes.title} variant="h5" gutterBottom>
+            <Box
+              fontFamily={Constant.FONT_FAMILY_MAIN}
+              fontWeight="bold"
+              color={Constant.TEXT_DARK}
+              fontSize={28}
+              mb={3}
+            >
               Why choose us
-            </Typography>
+            </Box>
           </Box>
           <Grid container spacing={3}>
             {[1, 2, 3].map((value) => (
@@ -172,14 +140,36 @@ const IntroductionSection = () => {
         </Container>
       </Box>
 
-      <Container maxWidth="md">
-        <Box my={6}>
-          <Typography className={classes.title} variant="h5" gutterBottom>
+      <Box mb={16}>
+        <Container maxWidth="md">
+          <Box
+            fontFamily={Constant.FONT_FAMILY_MAIN}
+            fontWeight="bold"
+            color={Constant.TEXT_DARK}
+            fontSize={28}
+            my={6}
+          >
             Our Menu
-          </Typography>
-        </Box>
-        <FeatureMenu />
-      </Container>
+          </Box>
+          <FeatureMenu />
+        </Container>
+      </Box>
+
+      <Box mb={16}>
+        <Container maxWidth="md">
+          <Box
+            fontFamily={Constant.FONT_FAMILY_MAIN}
+            fontWeight="bold"
+            color={Constant.TEXT_DARK}
+            fontSize={28}
+            mb={6}
+          >
+            Our Products
+          </Box>
+          <ProductSection />
+        </Container>
+      </Box>
+      <FooterSection/>
     </div>
   );
 };

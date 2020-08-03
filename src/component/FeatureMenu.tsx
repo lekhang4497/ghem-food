@@ -9,7 +9,7 @@ import Constant from "../constant/Constant";
 const useStyles = makeStyles({
   tab: {
     alignItems: "flex-start",
-    fontWeight: "bold",
+    fontWeight: 600,
   },
   tabSelected: {
     color: Constant.COLOR_PRIMARY,

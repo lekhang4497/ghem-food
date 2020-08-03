@@ -27,14 +27,15 @@ const MenuCard = () => {
       width="100%"
       border={1}
       borderColor={Constant.COLOR_PRIMARY_LIGHT}
+      fontFamily={Constant.FONT_FAMILY_MAIN}
     >
       <Box mb={3}>
         <div className={classes.featureImg} />
       </Box>
-      <Box mb={1} fontWeight="bold" color={Constant.TEXT_DARK}>
+      <Box mb={1} fontWeight={600} color={Constant.TEXT_DARK}>
         Various Menu
       </Box>
-      <Box fontWeight="bold" color={Constant.COLOR_PRIMARY}>
+      <Box fontWeight={600} color={Constant.COLOR_PRIMARY}>
         $100
       </Box>
     </Box>

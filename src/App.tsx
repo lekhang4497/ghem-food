@@ -6,7 +6,7 @@ import Constant from "./constant/Constant";
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: ["Open Sans"].join(","),
+    fontFamily: ['"Open Sans"'].join(","),
     button: {
       textTransform: "none"
     }
