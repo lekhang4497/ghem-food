@@ -12,6 +12,7 @@ const ReasonCard = () => (
     border={1}
     borderColor={Constant.COLOR_PRIMARY_LIGHT}
     fontFamily={Constant.FONT_FAMILY_MAIN}
+    boxShadow="0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
   >
     <Box mb={3}>
       <FontAwesomeIcon

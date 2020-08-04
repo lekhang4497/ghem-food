@@ -31,8 +31,8 @@ const useStyles = makeStyles({
     borderRadius: "50%",
     maxWidth: "100%",
     background:
-      'url("http://www.ghemsaigon.com/assets/images/food/1.jpg") 50% 50% no-repeat',
-    backgroundSize: "100%",
+      'url("http://www.ghemsaigon.com/assets/images/header/2.jpg") 50% 50% no-repeat',
+    backgroundSize: "cover",
     width: "100%",
     paddingBottom: "100%",
     backgroundColor: Constant.COLOR_PRIMARY,

@@ -4,7 +4,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  featureImg: {
+  featureImg: (props: MenuCardProps) => ({
     borderRadius: "50%",
     width: "80%",
     paddingBottom: "80%",
@@ -13,12 +13,16 @@ const useStyles = makeStyles({
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     background:
-      'url("http://www.ghemsaigon.com/assets/images/food/1.jpg") 50% 50% no-repeat',
-  },
+      `url("${props.imagePath}") 50% 50% no-repeat`,
+  }),
 });
 
-const MenuCard = () => {
-  const classes = useStyles();
+interface MenuCardProps {
+  imagePath: string
+}
+
+const MenuCard = (props: MenuCardProps) => {
+  const classes = useStyles(props);
   return (
     <Box
       bgcolor={Constant.COLOR_PRIMARY_LIGHT_TRANS}
@@ -28,6 +32,7 @@ const MenuCard = () => {
       border={1}
       borderColor={Constant.COLOR_PRIMARY_LIGHT}
       fontFamily={Constant.FONT_FAMILY_MAIN}
+      boxShadow="0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
     >
       <Box mb={3}>
         <div className={classes.featureImg} />

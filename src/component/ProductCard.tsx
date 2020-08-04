@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     background:
-      'url("http://www.ghemsaigon.com/assets/images/food/1.jpg") 50% 50% no-repeat',
+      `url("${process.env.PUBLIC_URL + '/img/feature_dishes/4.jpg'}") 50% 50% no-repeat`,
   },
 });
 

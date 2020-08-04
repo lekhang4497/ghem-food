@@ -69,7 +69,7 @@ const FeatureMenu = () => {
           <Grid container justify="center" spacing={2}>
             {[1, 2, 3].map((value) => (
               <Grid item md={4} container justify="center">
-                <MenuCard />
+                <MenuCard imagePath={process.env.PUBLIC_URL + '/img/feature_dishes/' + value + '.jpg'}/>
               </Grid>
             ))}
           </Grid>
