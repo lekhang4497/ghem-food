@@ -5,6 +5,7 @@ import MenuCard from "./MenuCard";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Constant from "../constant/Constant";
+import grey from "@material-ui/core/colors/grey";
 
 const useStyles = makeStyles({
   tab: {
@@ -17,7 +18,14 @@ const useStyles = makeStyles({
   tabIndicator: {
     right: "auto",
     left: 0,
+    zIndex: 1
   },
+  tabs: {
+    // borderLeft: `2px solid ${grey[300]}`,
+  },
+  textColorInherit: {
+    borderLeft: `2px solid ${grey[300]}`,
+  }
 });
 
 interface TabPanelProps {
@@ -49,7 +57,8 @@ const FeatureMenu = () => {
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"
-          classes={{ indicator: classes.tabIndicator }}
+          classes={{ indicator: classes.tabIndicator}}
+          className={classes.tabs}
           indicatorColor="primary"
         >
           {menuTabs.map((value) => (
@@ -59,16 +68,17 @@ const FeatureMenu = () => {
               classes={{
                 wrapper: classes.tab,
                 selected: classes.tabSelected,
+                textColorInherit: classes.textColorInherit
               }}
             />
           ))}
         </Tabs>
       </Box>
-      <Box flexGrow={1} px={4}>
+      <Box flexGrow={1}>
         <TabPanel value={value} index={0}>
-          <Grid container justify="center" spacing={2}>
+          <Grid container justify="center" spacing={4}>
             {[1, 2, 3].map((value) => (
-              <Grid item md={4} container justify="center">
+              <Grid item sm={4} container justify="center">
                 <MenuCard imagePath={process.env.PUBLIC_URL + '/img/feature_dishes/' + value + '.jpg'}/>
               </Grid>
             ))}

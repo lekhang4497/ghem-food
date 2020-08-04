@@ -5,9 +5,9 @@ import ProductCard from "./ProductCard";
 
 const ProductSection = () => {
   return <Box>
-    <Grid container justify="center" spacing={2}>
+    <Grid container justify="center" spacing={4}>
       {[1, 2, 3].map((value) => (
-        <Grid item md={4} container justify="center">
+        <Grid item sm={4} justify="center">
           <ProductCard/>
         </Grid>
       ))}

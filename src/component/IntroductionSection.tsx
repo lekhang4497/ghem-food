@@ -147,9 +147,9 @@ const IntroductionSection = () => {
             fontWeight="bold"
             color={Constant.TEXT_DARK}
             fontSize={28}
-            my={6}
+            mb={6}
           >
-            Our Menu
+            Explore Our Menu
           </Box>
           <FeatureMenu />
         </Container>
@@ -164,7 +164,7 @@ const IntroductionSection = () => {
             fontSize={28}
             mb={6}
           >
-            Our Products
+            And Our Services
           </Box>
           <ProductSection />
         </Container>
