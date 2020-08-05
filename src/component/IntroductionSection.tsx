@@ -9,6 +9,9 @@ import FeatureMenu from "./FeatureMenu";
 import AppNav from "./AppNavbar";
 import ProductSection from "./ProductSection";
 import FooterSection from "./FooterSection";
+import {useTranslation} from "react-i18next";
+import AppButton from "./AppButton";
+import OutlinedButton from "./OutlinedButton";
 
 const useStyles = makeStyles({
   root: {
@@ -30,8 +33,9 @@ const useStyles = makeStyles({
   titleImg: {
     borderRadius: "50%",
     maxWidth: "100%",
-    background:
-      'url("http://www.ghemsaigon.com/assets/images/header/2.jpg") 50% 50% no-repeat',
+    background: `url("${
+      process.env.PUBLIC_URL + "/img/landing/avatar.png"
+    }") 50% 50% no-repeat`,
     backgroundSize: "cover",
     width: "100%",
     paddingBottom: "100%",
@@ -53,10 +57,15 @@ const useStyles = makeStyles({
   coverGradient: {
     background: `linear-gradient(135deg, ${Constant.COLOR_PRIMARY_LIGHT}, #fff, #fff)`,
   },
+  logoInText: {
+    verticalAlign: "middle",
+  }
 });
 
 const IntroductionSection = () => {
   const classes = useStyles();
+  const { t, i18n } = useTranslation();
+
   return (
     <div>
       <Box className={classes.coverGradient}>
@@ -82,23 +91,28 @@ const IntroductionSection = () => {
                     textAlign="left"
                     mb={3}
                   >
-                    All in Good taste food with{" "}
-                    <Box
-                      component="span"
-                      color={Constant.COLOR_PRIMARY}
-                      fontFamily={Constant.FONT_FAMILY_BEAUTY}
-                      fontStyle="italic"
-                      fontWeight="normal"
-                    >
-                      Ghém
-                    </Box>
+                    {t('welcomeEnjoy')}{" "}
+                    {/*<Box*/}
+                    {/*  component="span"*/}
+                    {/*  color={Constant.COLOR_PRIMARY}*/}
+                    {/*  fontFamily={Constant.FONT_FAMILY_BEAUTY}*/}
+                    {/*  fontStyle="italic"*/}
+                    {/*  fontWeight="normal"*/}
+                    {/*>*/}
+                    {/*  Ghém*/}
+                    {/*</Box>*/}
+                    <img src={process.env.PUBLIC_URL + "/img/logo_no_text.png"} height={48} className={classes.logoInText} />
                   </Box>
                   <Typography variant="subtitle1" gutterBottom align="left">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Quos blanditiis tenetur abc abc
+                    {t('welcomeText')}
                   </Typography>
                   <Box mt={4}>
-                    <Button className={classes.root}>See our menu</Button>
+                    <Box component='span' mr={2}>
+                    <AppButton>Xem Thực Đơn</AppButton>
+                    </Box>
+                    <Box component='span'>
+                      <OutlinedButton>Đặt bàn</OutlinedButton>
+                    </Box>
                   </Box>
                 </Box>
               </Grid>
@@ -164,7 +178,7 @@ const IntroductionSection = () => {
             fontSize={28}
             mb={6}
           >
-            And Our Services
+            Gói Combo Ưu Đãi
           </Box>
           <ProductSection />
         </Container>

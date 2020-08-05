@@ -5,10 +5,10 @@ import Constant from "../constant/Constant";
 import grey from "@material-ui/core/colors/grey";
 
 const useStyles = makeStyles({
-  featureImg: {
+  featureImg: (props: ProductCardProps) => ({
     width: "100%",
     borderRadius: 10,
-    paddingBottom: "60%",
+    paddingBottom: "50%",
     borderWidth: 1,
     boxSizing: "border-box",
     borderColor: grey[300],
@@ -17,21 +17,26 @@ const useStyles = makeStyles({
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    background: `url("${
-      process.env.PUBLIC_URL + "/img/product.jpg"
-    }") 50% 50% no-repeat`,
-  },
+    background: `url("${props.img}") 50% 50% no-repeat`,
+  }),
 });
 
-const ProductCard = () => {
-  const classes = useStyles();
+export interface ProductCardProps {
+  name: string;
+  description: string;
+  img: string;
+}
+
+const ProductCard = (props: ProductCardProps) => {
+  const { name, description } = props;
+  const classes = useStyles(props);
   return (
     <Box overflow="hidden" width="100%" fontFamily={Constant.FONT_FAMILY_MAIN}>
       <Box mb={3}>
         <div className={classes.featureImg} />
       </Box>
       <Box mb={2} fontWeight="bold" color={Constant.TEXT_DARK} textAlign="left">
-        Weekly Set
+        {name}
       </Box>
       <Box
         mb={1}
@@ -40,7 +45,7 @@ const ProductCard = () => {
         fontSize={14}
         color={Constant.TEXT_SECONDARY}
       >
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        {description}
       </Box>
       <Box
         fontWeight={600}

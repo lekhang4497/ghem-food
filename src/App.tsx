@@ -1,15 +1,15 @@
 import React from "react";
 import "./App.css";
-import IntroductionSection from "./component/IntroductionSection";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Constant from "./constant/Constant";
+import AppRoot from "./component/AppRoot";
 
 const theme = createMuiTheme({
   typography: {
     fontFamily: ['"Open Sans"'].join(","),
     button: {
-      textTransform: "none"
-    }
+      textTransform: "none",
+    },
   },
   palette: {
     primary: {
@@ -25,7 +25,7 @@ const theme = createMuiTheme({
 const App = () => (
   <div className="App">
     <ThemeProvider theme={theme}>
-      <IntroductionSection />
+      <AppRoot />
     </ThemeProvider>
   </div>
 );

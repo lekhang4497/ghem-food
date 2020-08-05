@@ -1,11 +1,8 @@
 import Box from "@material-ui/core/Box";
-import { Container, Tab, Tabs, Typography } from "@material-ui/core";
+import {Container} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
-import MenuCard from "./MenuCard";
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Constant from "../constant/Constant";
-import grey from "@material-ui/core/colors/grey";
 
 const FooterSection = () => {
   return (

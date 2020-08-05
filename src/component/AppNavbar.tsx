@@ -25,16 +25,7 @@ const AppNav = () => {
       <Box py={2} fontFamily={Constant.FONT_FAMILY_MAIN}>
         <Grid container justify="flex-end">
           <Grid item md={6} container justify="flex-start">
-            {/* Logo */}
-            <Box
-              color={Constant.COLOR_PRIMARY}
-              fontFamily={"Lobster Two"}
-              fontStyle={"italic"}
-              fontWeight={"normal"}
-              fontSize={64}
-            >
-              Ghém
-            </Box>
+            <img src={process.env.PUBLIC_URL + "/img/logo.png"} width={180} />
           </Grid>
           <Grid item md={6} container alignItems="center">
             {/* Menu items*/}
