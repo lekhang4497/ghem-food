@@ -6,6 +6,6 @@ export default {
     COLOR_PRIMARY: '#F2994A',
     COLOR_PRIMARY_LIGHT: '#fff3e0',
     COLOR_PRIMARY_LIGHT_TRANS: 'rgba(255, 243, 224,0.5)',
-    FONT_FAMILY_BEAUTY: "Lobster Two",
+    FONT_FAMILY_BEAUTY: "Lobster",
     FONT_FAMILY_MAIN: "Open Sans"
 };

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCarrot } from "@fortawesome/free-solid-svg-icons";
 import Constant from "../constant/Constant";
 
-const ReasonCard = () => (
+const ReasonCard = ({icon}: any) => (
   <Box
     bgcolor={Constant.COLOR_PRIMARY_LIGHT_TRANS}
     borderRadius={5}
@@ -16,7 +16,7 @@ const ReasonCard = () => (
   >
     <Box mb={3}>
       <FontAwesomeIcon
-        icon={faCarrot}
+        icon={icon}
         size="3x"
         color={Constant.COLOR_PRIMARY}
       />
@@ -25,8 +25,7 @@ const ReasonCard = () => (
       Various Menu
     </Box>
     <Box color={Constant.TEXT_SECONDARY}>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis
-      tenetur
+      Lorem ipsum dolor sit amet, consectetur.
     </Box>
   </Box>
 );

@@ -1,11 +1,12 @@
 import Box from "@material-ui/core/Box";
 import { Tab, Tabs } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
-import MenuCard from "./MenuCard";
+import FeatureMenuCard from "./FeatureMenuCard";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Constant from "../constant/Constant";
 import grey from "@material-ui/core/colors/grey";
+import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles({
   tab: {
@@ -40,11 +41,12 @@ const TabPanel = (props: TabPanelProps) => {
   return <div>{value === index && <Box>{children}</Box>}</div>;
 };
 
-const menuTabs = ["Breakfast", "Lunch", "Dinner", "Dessert"];
+const menuTabs = ["menuMain", "menuVegetable", "menuSoup", "menuHotPot","menuParty"];
 
 const FeatureMenu = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const { t } = useTranslation();
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -64,7 +66,7 @@ const FeatureMenu = () => {
           {menuTabs.map((value) => (
             <Tab
               key={value}
-              label={value}
+              label={t(value)}
               classes={{
                 wrapper: classes.tab,
                 selected: classes.tabSelected,
@@ -79,7 +81,7 @@ const FeatureMenu = () => {
           <Grid container justify="center" spacing={4}>
             {[1, 2, 3].map((value) => (
               <Grid item sm={4} container justify="center">
-                <MenuCard imagePath={process.env.PUBLIC_URL + '/img/feature_dishes/' + value + '.jpg'}/>
+                <FeatureMenuCard imagePath={process.env.PUBLIC_URL + '/img/feature_dishes/' + value + '.jpg'}/>
               </Grid>
             ))}
           </Grid>

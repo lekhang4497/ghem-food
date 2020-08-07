@@ -1,5 +1,5 @@
 import Box from "@material-ui/core/Box";
-import {Container} from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import React from "react";
 import Constant from "../constant/Constant";
@@ -13,16 +13,13 @@ const FooterSection = () => {
     >
       <Container maxWidth="md">
         <Grid container spacing={3}>
-          <Grid item md={6}>
-            <Box
-              textAlign="left"
-              color={Constant.COLOR_PRIMARY}
-              fontFamily={"Lobster Two"}
-              fontStyle={"italic"}
-              fontWeight={"normal"}
-              fontSize={64}
-            >
-              Ghém
+          <Grid item md={6} container justify="flex-start">
+            <Box>
+              <img
+                src={process.env.PUBLIC_URL + "/img/logo.png"}
+                width={180}
+                alt="Ghem's logo"
+              />
             </Box>
           </Grid>
           <Grid item md={6}>

@@ -1,47 +1,46 @@
-import Constant from "../constant/Constant";
-import Box from "@material-ui/core/Box";
 import React from "react";
+import { Box } from "@material-ui/core";
+import Constant from "../constant/Constant";
 import { makeStyles } from "@material-ui/core/styles";
+import grey from "@material-ui/core/colors/grey";
 
 const useStyles = makeStyles({
-  featureImg: (props: MenuCardProps) => ({
+  img: (props: MenuCardProps) => ({
     borderRadius: "50%",
+    borderWidth: 2,
+    borderColor: grey[300],
+    borderStyle: "solid",
     width: "80%",
     paddingBottom: "80%",
     margin: "auto",
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    background:
-      `url("${props.imagePath}") 50% 50% no-repeat`,
+    background: `url("${props.image}") 50% 50% no-repeat`,
+    boxShadow:
+      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
   }),
 });
 
 interface MenuCardProps {
-  imagePath: string
+  image: string;
+  name: string;
+  price: number;
 }
 
 const MenuCard = (props: MenuCardProps) => {
   const classes = useStyles(props);
+  const { name, price } = props;
   return (
-    <Box
-      bgcolor={Constant.COLOR_PRIMARY_LIGHT_TRANS}
-      p={2}
-      borderRadius={5}
-      width="100%"
-      border={1}
-      borderColor={Constant.COLOR_PRIMARY_LIGHT}
-      fontFamily={Constant.FONT_FAMILY_MAIN}
-      boxShadow="0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
-    >
-      <Box mb={3}>
-        <div className={classes.featureImg} />
+    <Box>
+      <Box mb={2}>
+        <div className={classes.img} />
       </Box>
-      <Box mb={1} fontWeight={600} color={Constant.TEXT_DARK}>
-        Various Menu
+      <Box mb={1} fontWeight={700} color={Constant.TEXT_DARK}>
+        {name}
       </Box>
-      <Box fontWeight={600} color={Constant.COLOR_PRIMARY}>
-        $100
+      <Box fontWeight={700} color={Constant.COLOR_PRIMARY}>
+        {`${price}.000 VND`}
       </Box>
     </Box>
   );

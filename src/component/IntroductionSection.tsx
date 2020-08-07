@@ -9,9 +9,11 @@ import FeatureMenu from "./FeatureMenu";
 import AppNav from "./AppNavbar";
 import ProductSection from "./ProductSection";
 import FooterSection from "./FooterSection";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 import AppButton from "./AppButton";
 import OutlinedButton from "./OutlinedButton";
+import WelcomeSection from "./WelcomeSection";
+import {faAppleAlt, faPhone, faTruck, faUtensils} from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles({
   root: {
@@ -59,12 +61,12 @@ const useStyles = makeStyles({
   },
   logoInText: {
     verticalAlign: "middle",
-  }
+  },
 });
 
 const IntroductionSection = () => {
   const classes = useStyles();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -74,87 +76,12 @@ const IntroductionSection = () => {
         </Box>
 
         <Box pb={8}>
-          <Container maxWidth="md">
-            <Grid container spacing={3}>
-              <Grid item md={6}>
-                <Box
-                  flexDirection="column"
-                  justifyContent="center"
-                  height="100%"
-                  display="flex"
-                >
-                  <Box
-                    fontFamily={Constant.FONT_FAMILY_MAIN}
-                    fontWeight="bold"
-                    color={Constant.TEXT_DARK}
-                    fontSize={48}
-                    textAlign="left"
-                    mb={3}
-                  >
-                    {t('welcomeEnjoy')}{" "}
-                    {/*<Box*/}
-                    {/*  component="span"*/}
-                    {/*  color={Constant.COLOR_PRIMARY}*/}
-                    {/*  fontFamily={Constant.FONT_FAMILY_BEAUTY}*/}
-                    {/*  fontStyle="italic"*/}
-                    {/*  fontWeight="normal"*/}
-                    {/*>*/}
-                    {/*  Ghém*/}
-                    {/*</Box>*/}
-                    <img src={process.env.PUBLIC_URL + "/img/logo_no_text.png"} height={48} className={classes.logoInText} />
-                  </Box>
-                  <Typography variant="subtitle1" gutterBottom align="left">
-                    {t('welcomeText')}
-                  </Typography>
-                  <Box mt={4}>
-                    <Box component='span' mr={2}>
-                    <AppButton>Xem Thực Đơn</AppButton>
-                    </Box>
-                    <Box component='span'>
-                      <OutlinedButton>Đặt bàn</OutlinedButton>
-                    </Box>
-                  </Box>
-                </Box>
-              </Grid>
-              <Grid item md={6} container justify="flex-end">
-                <Box
-                  border={16}
-                  width="80%"
-                  borderRadius={"50%"}
-                  borderColor={Constant.COLOR_PRIMARY_LIGHT}
-                >
-                  <div className={classes.titleImg} />
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
+          <WelcomeSection/>
         </Box>
       </Box>
 
-      <Box mb={16}>
-        <Container maxWidth="md">
-          <Box my={6}>
-            <Box
-              fontFamily={Constant.FONT_FAMILY_MAIN}
-              fontWeight="bold"
-              color={Constant.TEXT_DARK}
-              fontSize={28}
-              mb={3}
-            >
-              Why choose us
-            </Box>
-          </Box>
-          <Grid container spacing={3}>
-            {[1, 2, 3].map((value) => (
-              <Grid item md={4} key={value}>
-                <ReasonCard />
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
 
-      <Box mb={16}>
+      <Box mb={16} mt={12}>
         <Container maxWidth="md">
           <Box
             fontFamily={Constant.FONT_FAMILY_MAIN}
@@ -163,7 +90,7 @@ const IntroductionSection = () => {
             fontSize={28}
             mb={6}
           >
-            Explore Our Menu
+            Khám Phá Thực Đơn
           </Box>
           <FeatureMenu />
         </Container>
@@ -183,7 +110,31 @@ const IntroductionSection = () => {
           <ProductSection />
         </Container>
       </Box>
-      <FooterSection/>
+      <Box mb={16}>
+        <Container maxWidth="md">
+          <Box my={6}>
+            <Box
+              fontFamily={Constant.FONT_FAMILY_MAIN}
+              fontWeight="bold"
+              color={Constant.TEXT_DARK}
+              fontSize={28}
+              mb={3}
+            >
+              Đặt Hàng Đơn Giản
+            </Box>
+          </Box>
+          <Grid container spacing={3} justify="center">
+            {[faAppleAlt, faPhone, faTruck ,faUtensils].map((value,idx) => (
+              <Grid item md={3} sm={6} key={idx}>
+                <ReasonCard icon={value}/>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      <FooterSection />
+
     </div>
   );
 };
