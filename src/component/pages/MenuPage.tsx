@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Box, Container } from "@material-ui/core";
-import AppNav from "./AppNavbar";
+import AppNav from "../organisms/AppNavbar";
 import Grid from "@material-ui/core/Grid";
-import MenuCard from "./MenuCard";
-import Constant from "../constant/Constant";
+import MenuCard from "../atoms/MenuCard";
+import Constant from "../../constant/Constant";
 import { makeStyles } from "@material-ui/core/styles";
-import FooterSection from "./FooterSection";
-import ImageButton from "./ImageButton";
-import { DISHES, INGREDIENTS } from "../assets/dishes";
+import FooterSection from "../organisms/FooterSection";
+import ImageButton from "../atoms/ImageButton";
+import { DISHES, INGREDIENT_MAP, INGREDIENTS } from "../../assets/dishes";
 
 const useStyles = makeStyles({
   logoInText: {
@@ -21,7 +21,10 @@ const useStyles = makeStyles({
 const MenuPage = () => {
   const classes = useStyles();
   const [ingredient, setIngredient] = useState(INGREDIENTS[0].value);
-  const dishes = DISHES.filter((dish) => (dish.type === ingredient));
+  let dishes = INGREDIENT_MAP.get(ingredient);
+  if (!dishes) {
+    dishes = DISHES;
+  }
   return (
     <Box>
       <Box className={classes.coverGradient}>
@@ -53,9 +56,7 @@ const MenuPage = () => {
                 <Grid item md={2} key={item.name}>
                   <Box>
                     <ImageButton
-                      image={
-                        process.env.PUBLIC_URL + "/img/combo/convenient.jpg"
-                      }
+                      image={`${process.env.PUBLIC_URL}/img/dishes/${item.value}/avatar.jpg`}
                       text={item.name}
                       active={item.value === ingredient}
                       onClick={() => setIngredient(item.value)}

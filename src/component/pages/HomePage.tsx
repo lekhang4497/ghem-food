@@ -1,32 +1,29 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import { Button, Container, Typography } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import Constant from "../constant/Constant";
-import ReasonCard from "./ReasonCard";
-import FeatureMenu from "./FeatureMenu";
-import AppNav from "./AppNavbar";
-import ProductSection from "./ProductSection";
-import FooterSection from "./FooterSection";
+import Constant from "../../constant/Constant";
+import ReasonCard from "../atoms/ReasonCard";
+import FeatureMenu from "../organisms/FeatureMenu";
+import AppNav from "../organisms/AppNavbar";
+import ProductSection from "../ProductSection";
+import FooterSection from "../organisms/FooterSection";
 import { useTranslation } from "react-i18next";
-import AppButton from "./AppButton";
-import OutlinedButton from "./OutlinedButton";
-import WelcomeSection from "./WelcomeSection";
-import {faAppleAlt, faPhone, faTruck, faUtensils} from "@fortawesome/free-solid-svg-icons";
+import AppButton from "../atoms/AppButton";
+import WelcomeSection from "../organisms/WelcomeSection";
+import {
+  faAppleAlt,
+  faArrowRight,
+  faPhone,
+  faTruck,
+  faUtensils,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link as RouterLink } from "react-router-dom";
+import SectionTitle from "../atoms/SectionTitle";
 
 const useStyles = makeStyles({
-  root: {
-    background: `linear-gradient(45deg, ${Constant.BUTTON_GRADIENT_START}, ${Constant.BUTTON_GRADIENT_END})`,
-    border: 0,
-    color: "white",
-    fontWeight: "bold",
-    paddingLeft: 24,
-    paddingRight: 24,
-    paddingTop: 12,
-    paddingBottom: 12,
-    textTransform: "none",
-  },
   title: {
     fontFamily: Constant.FONT_FAMILY_MAIN,
     fontWeight: "bold",
@@ -64,7 +61,7 @@ const useStyles = makeStyles({
   },
 });
 
-const IntroductionSection = () => {
+const HomePage = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -76,57 +73,40 @@ const IntroductionSection = () => {
         </Box>
 
         <Box pb={8}>
-          <WelcomeSection/>
+          <WelcomeSection />
         </Box>
       </Box>
 
-
       <Box mb={16} mt={12}>
         <Container maxWidth="md">
-          <Box
-            fontFamily={Constant.FONT_FAMILY_MAIN}
-            fontWeight="bold"
-            color={Constant.TEXT_DARK}
-            fontSize={28}
-            mb={6}
-          >
-            Khám Phá Thực Đơn
-          </Box>
+          <SectionTitle text="Thực Đơn Đa Dạng" />
           <FeatureMenu />
+          <Box textAlign="right" mt={3}>
+            <AppButton component={RouterLink} to="/menu">
+              Xem Toàn Bộ Thực Đơn
+              <Box component="span" ml={1}>
+                <FontAwesomeIcon icon={faArrowRight} color="white" />
+              </Box>
+            </AppButton>
+          </Box>
         </Container>
       </Box>
 
       <Box mb={16}>
         <Container maxWidth="md">
-          <Box
-            fontFamily={Constant.FONT_FAMILY_MAIN}
-            fontWeight="bold"
-            color={Constant.TEXT_DARK}
-            fontSize={28}
-            mb={6}
-          >
-            Gói Combo Ưu Đãi
-          </Box>
+          <SectionTitle text="Gói Combo Ưu Đãi" />
           <ProductSection />
         </Container>
       </Box>
       <Box mb={16}>
         <Container maxWidth="md">
           <Box my={6}>
-            <Box
-              fontFamily={Constant.FONT_FAMILY_MAIN}
-              fontWeight="bold"
-              color={Constant.TEXT_DARK}
-              fontSize={28}
-              mb={3}
-            >
-              Đặt Hàng Đơn Giản
-            </Box>
+            <SectionTitle text="Đặt Hàng Đơn Giản" />
           </Box>
           <Grid container spacing={3} justify="center">
-            {[faAppleAlt, faPhone, faTruck ,faUtensils].map((value,idx) => (
+            {[faAppleAlt, faPhone, faTruck, faUtensils].map((value, idx) => (
               <Grid item md={3} sm={6} key={idx}>
-                <ReasonCard icon={value}/>
+                <ReasonCard icon={value} />
               </Grid>
             ))}
           </Grid>
@@ -134,9 +114,8 @@ const IntroductionSection = () => {
       </Box>
 
       <FooterSection />
-
     </div>
   );
 };
 
-export default IntroductionSection;
+export default HomePage;

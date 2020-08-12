@@ -6,22 +6,22 @@ import ProductCard, { ProductCardProps } from "./ProductCard";
 const products: Array<ProductCardProps> = [
   {
     name: "Combo Tiện Lợi",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    description: "Hai bữa trưa và tối chỉ 196,000 VND.",
     img: process.env.PUBLIC_URL + "/img/combo/convenient.jpg",
   },
   {
     name: "Combo Gia Đình",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    description: "Hai bữa trưa và tối cho cả nhà 2-4 người chỉ 380,000 VND.",
     img: process.env.PUBLIC_URL + "/img/combo/family.jpg",
   },
   {
     name: "Combo Tiệc",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    description: "Combo tiệc tại nhà với các món chính, món lẩu, món gỏi",
     img: process.env.PUBLIC_URL + "/img/combo/party.jpg",
   },
   {
     name: "Combo Cuối Tuần",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    description: "Lẩu và 2 món ăn cho cả nhà 2-4 người chỉ 360,000 VND",
     img: process.env.PUBLIC_URL + "/img/combo/weekend.jpg",
   },
 ];

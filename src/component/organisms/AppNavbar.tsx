@@ -1,7 +1,7 @@
 import { Container, Link } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import Constant from "../constant/Constant";
+import Constant from "../../constant/Constant";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link as RouterLink } from "react-router-dom";
@@ -16,6 +16,21 @@ const useStyles = makeStyles({
     },
   },
 });
+
+const menu = [
+  {
+    name: "Trang chủ",
+    to: "/",
+  },
+  {
+    name: "Thực Đơn",
+    to: "/menu",
+  },
+  {
+    name: "Combo",
+    to: "/combo",
+  },
+];
 
 const AppNav = () => {
   const classes = useStyles();
@@ -35,25 +50,18 @@ const AppNav = () => {
             </Grid>
             <Grid item md={6} container alignItems="center">
               {/* Menu items*/}
-              <Grid container spacing={6} justify="flex-end">
-                <Grid item>
-                  <Link
-                    className={classes.menuItem}
-                    component={RouterLink}
-                    to="/"
-                  >
-                    Home
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link
-                    className={classes.menuItem}
-                    component={RouterLink}
-                    to="/menu"
-                  >
-                    Menu
-                  </Link>
-                </Grid>
+              <Grid container spacing={4} justify="flex-end">
+                {menu.map((item) => (
+                  <Grid item>
+                    <Link
+                      className={classes.menuItem}
+                      component={RouterLink}
+                      to={item.to}
+                    >
+                      {item.name}
+                    </Link>
+                  </Grid>
+                ))}
               </Grid>
             </Grid>
           </Grid>

@@ -1,9 +1,9 @@
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import Constant from "../constant/Constant";
+import Constant from "../../constant/Constant";
 import { Container, Typography } from "@material-ui/core";
-import AppButton from "./AppButton";
-import OutlinedButton from "./OutlinedButton";
+import AppButton from "../atoms/AppButton";
+import OutlinedButton from "../atoms/OutlinedButton";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTranslation } from "react-i18next";

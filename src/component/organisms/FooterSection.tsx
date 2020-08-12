@@ -2,7 +2,7 @@ import Box from "@material-ui/core/Box";
 import { Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import React from "react";
-import Constant from "../constant/Constant";
+import Constant from "../../constant/Constant";
 
 const FooterSection = () => {
   return (

@@ -1,4 +1,4 @@
-import Constant from "../constant/Constant";
+import Constant from "../../constant/Constant";
 import Box from "@material-ui/core/Box";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
@@ -9,24 +9,26 @@ const useStyles = makeStyles({
     borderRadius: "50%",
     borderWidth: 2,
     borderColor: grey[400],
-    borderStyle: 'solid',
+    borderStyle: "solid",
     width: "80%",
     paddingBottom: "80%",
     margin: "auto",
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    background:
-      `url("${props.imagePath}") 50% 50% no-repeat`,
+    background: `url("${props.image}") 50% 50% no-repeat`,
   }),
 });
 
 interface MenuCardProps {
-  imagePath: string
+  image: string;
+  name: string;
+  price: number;
 }
 
 const FeatureMenuCard = (props: MenuCardProps) => {
   const classes = useStyles(props);
+  const { name, price } = props;
   return (
     <Box
       bgcolor={Constant.COLOR_PRIMARY_LIGHT_TRANS}
@@ -42,10 +44,10 @@ const FeatureMenuCard = (props: MenuCardProps) => {
         <div className={classes.featureImg} />
       </Box>
       <Box mb={1} fontWeight={600} color={Constant.TEXT_DARK}>
-        Various Menu
+        {name}
       </Box>
       <Box fontWeight={600} color={Constant.COLOR_PRIMARY}>
-        $100
+        {`${price}.000 VND`}
       </Box>
     </Box>
   );

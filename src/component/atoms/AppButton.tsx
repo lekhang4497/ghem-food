@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, ButtonProps } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Constant from "../constant/Constant";
+import Constant from "../../constant/Constant";
 
 const useStyles = makeStyles({
   root: {
@@ -19,7 +19,13 @@ const useStyles = makeStyles({
   },
 });
 
-const AppButton = (props: any) => {
+interface AppButtonProps extends ButtonProps {
+  component?: any;
+  to?: string;
+  children?: any;
+}
+
+const AppButton = (props: AppButtonProps) => {
   const classes = useStyles();
   const { children } = props;
   return (

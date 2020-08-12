@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@material-ui/core";
-import Constant from "../constant/Constant";
+import Constant from "../../constant/Constant";
 import { makeStyles } from "@material-ui/core/styles";
 import grey from "@material-ui/core/colors/grey";
 

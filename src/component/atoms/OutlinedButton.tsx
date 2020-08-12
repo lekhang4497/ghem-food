@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import { Button, ButtonProps } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Constant from "../constant/Constant";
+import Constant from "../../constant/Constant";
 import orange from "@material-ui/core/colors/orange";
 
 const useStyles = makeStyles({
@@ -21,7 +21,13 @@ const useStyles = makeStyles({
   },
 });
 
-const OutlinedButton = ({ children }: any) => {
+interface OutlinedButtonProps extends ButtonProps {
+  component?: any;
+  to?: string;
+  children?: any;
+}
+
+const OutlinedButton = ({ children }: OutlinedButtonProps) => {
   const classes = useStyles();
   return <Button className={classes.root}>{children}</Button>;
 };

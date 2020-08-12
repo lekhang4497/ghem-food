@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  Box,
-  ButtonBase,
-  createStyles,
-  Theme,
-  Typography,
-} from "@material-ui/core";
+import { Box, ButtonBase, createStyles, Theme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Constant from "../constant/Constant";
+import Constant from "../../constant/Constant";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -47,7 +41,6 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      color: theme.palette.common.white,
     },
     imageSrc: {
       position: "absolute",
@@ -94,7 +87,7 @@ interface ImageButtonProps {
 }
 
 const ImageButton = (props: ImageButtonProps) => {
-  const classes = useStyles();
+  const classes = useStyles(props);
   const { text, image, onClick, active } = props;
   return (
     <ButtonBase
@@ -105,18 +98,24 @@ const ImageButton = (props: ImageButtonProps) => {
         width: "100%",
         borderRadius: 8,
         overflow: "hidden",
+        border: active ? `2px solid ${Constant.COLOR_PRIMARY}` : "none",
       }}
       onClick={onClick}
     >
       <span
         className={classes.imageSrc}
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: active ? "none" : `url(${image})`,
+          backgroundColor: Constant.COLOR_PRIMARY_LIGHT_TRANS,
         }}
       />
       {!active && <span className={classes.imageBackdrop} />}
       <span className={classes.imageButton}>
-        <Box fontFamily={Constant.FONT_FAMILY_BEAUTY} fontSize={36}>
+        <Box
+          fontFamily={Constant.FONT_FAMILY_BEAUTY}
+          fontSize={36}
+          color={active ? Constant.COLOR_PRIMARY : "white"}
+        >
           {text}
         </Box>
       </span>

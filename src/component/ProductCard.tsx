@@ -3,6 +3,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Constant from "../constant/Constant";
 import grey from "@material-ui/core/colors/grey";
+import { Link as RouterLink } from "react-router-dom";
+import { ButtonBase } from "@material-ui/core";
 
 const useStyles = makeStyles({
   featureImg: (props: ProductCardProps) => ({
@@ -47,13 +49,16 @@ const ProductCard = (props: ProductCardProps) => {
       >
         {description}
       </Box>
+
       <Box
         fontWeight={600}
         color={Constant.COLOR_PRIMARY}
         textAlign="left"
         fontSize={14}
       >
-        Read more
+        <ButtonBase component={RouterLink} to="/combo/1">
+          Xem thêm
+        </ButtonBase>
       </Box>
     </Box>
   );
