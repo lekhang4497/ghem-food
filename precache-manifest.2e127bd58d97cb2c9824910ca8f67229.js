@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "18d65b1a128951ffbe1d6d700a21d10f",
+    "revision": "616360648e90919ae3b0354ca719bfe9",
     "url": "/ghem-food/index.html"
   },
   {
-    "revision": "b1eae7e9f02e5a7eafc0",
+    "revision": "59f729d48170b6f19fd1",
     "url": "/ghem-food/static/css/main.86a8359d.chunk.css"
   },
   {
-    "revision": "32c63296fcb42b4abbf8",
-    "url": "/ghem-food/static/js/2.ca9c5b0f.chunk.js"
+    "revision": "797e027f7a1b87c322f3",
+    "url": "/ghem-food/static/js/2.ed5b4ad7.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/ghem-food/static/js/2.ca9c5b0f.chunk.js.LICENSE.txt"
+    "url": "/ghem-food/static/js/2.ed5b4ad7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b1eae7e9f02e5a7eafc0",
-    "url": "/ghem-food/static/js/main.247b0208.chunk.js"
+    "revision": "59f729d48170b6f19fd1",
+    "url": "/ghem-food/static/js/main.3c8b7b9d.chunk.js"
   },
   {
     "revision": "25cb191937f6dfc5613a",

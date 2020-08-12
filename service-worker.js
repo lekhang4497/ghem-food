@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ghem-food/precache-manifest.2a966e3d84ccce4c89e73573ef20385c.js"
+  "/ghem-food/precache-manifest.2e127bd58d97cb2c9824910ca8f67229.js"
 );
 
 self.addEventListener('message', (event) => {
