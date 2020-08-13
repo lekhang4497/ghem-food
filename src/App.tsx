@@ -9,6 +9,7 @@ const theme = createMuiTheme({
     fontFamily: ['"Open Sans"'].join(","),
     button: {
       textTransform: "none",
+      fontWeight: 700
     },
   },
   palette: {

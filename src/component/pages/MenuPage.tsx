@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Container } from "@material-ui/core";
+import {Box, Container, Paper} from "@material-ui/core";
 import AppNav from "../organisms/AppNavbar";
 import Grid from "@material-ui/core/Grid";
 import MenuCard from "../atoms/MenuCard";
@@ -55,12 +55,14 @@ const MenuPage = () => {
               {INGREDIENTS.map((item) => (
                 <Grid item md={2} key={item.name}>
                   <Box>
+                    <Paper style={{overflow: 'hidden'}} variant='outlined'>
                     <ImageButton
                       image={`${process.env.PUBLIC_URL}/img/dishes/${item.value}/avatar.jpg`}
                       text={item.name}
                       active={item.value === ingredient}
                       onClick={() => setIngredient(item.value)}
                     />
+                    </Paper>
                   </Box>
                 </Grid>
               ))}

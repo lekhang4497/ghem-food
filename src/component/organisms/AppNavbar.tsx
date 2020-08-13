@@ -23,12 +23,16 @@ const menu = [
     to: "/",
   },
   {
-    name: "Thực Đơn",
+    name: "Thực đơn",
     to: "/menu",
   },
   {
     name: "Combo",
     to: "/combo",
+  },
+  {
+    name: "Đặt bàn",
+    to: "/booking",
   },
 ];
 
@@ -52,7 +56,7 @@ const AppNav = () => {
               {/* Menu items*/}
               <Grid container spacing={4} justify="flex-end">
                 {menu.map((item) => (
-                  <Grid item>
+                  <Grid item key={item.name}>
                     <Link
                       className={classes.menuItem}
                       component={RouterLink}

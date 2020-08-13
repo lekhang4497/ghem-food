@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import MenuPage from "./pages/MenuPage";
 import { Box } from "@material-ui/core";
 import Constant from "../constant/Constant";
+import BookingPage from "./pages/BookingPage";
 
 const AppRoot = () => {
   return (
@@ -15,6 +16,9 @@ const AppRoot = () => {
           </Route>
           <Route path="/menu">
             <MenuPage />
+          </Route>
+          <Route path="/booking">
+            <BookingPage />
           </Route>
           <Route path="/">
             <HomePage />

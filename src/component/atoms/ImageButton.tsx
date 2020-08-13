@@ -96,29 +96,28 @@ const ImageButton = (props: ImageButtonProps) => {
       focusVisibleClassName={classes.focusVisible}
       style={{
         width: "100%",
-        borderRadius: 8,
-        overflow: "hidden",
-        border: active ? `2px solid ${Constant.COLOR_PRIMARY}` : "none",
       }}
       onClick={onClick}
     >
       <span
         className={classes.imageSrc}
         style={{
-          backgroundImage: active ? "none" : `url(${image})`,
+          backgroundImage: `url(${image})`,
           backgroundColor: Constant.COLOR_PRIMARY_LIGHT_TRANS,
         }}
       />
       {!active && <span className={classes.imageBackdrop} />}
-      <span className={classes.imageButton}>
-        <Box
-          fontFamily={Constant.FONT_FAMILY_BEAUTY}
-          fontSize={36}
-          color={active ? Constant.COLOR_PRIMARY : "white"}
-        >
-          {text}
-        </Box>
-      </span>
+      {!active && (
+        <span className={classes.imageButton}>
+          <Box
+            fontFamily={Constant.FONT_FAMILY_BEAUTY}
+            fontSize={36}
+            color={"white"}
+          >
+            {text}
+          </Box>
+        </span>
+      )}
     </ButtonBase>
   );
 };

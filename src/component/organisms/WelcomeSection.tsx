@@ -54,6 +54,7 @@ const WelcomeSection = () => {
                   src={process.env.PUBLIC_URL + "/img/logo_no_text.png"}
                   height={58}
                   className={classes.logoInText}
+                  alt="Ghém's logo"
                 />
               </Box>
               <Typography variant="subtitle1" gutterBottom align="left">
@@ -61,12 +62,14 @@ const WelcomeSection = () => {
               </Typography>
               <Box mt={4} textAlign="left">
                 <Box component="span" mr={2}>
-                  <AppButton component={RouterLink} to="/menu">
-                    Xem Thực Đơn
+                  <AppButton component={RouterLink} to="/booking">
+                    Đặt Bàn
                   </AppButton>
                 </Box>
                 <Box component="span">
-                  <OutlinedButton>Đặt bàn</OutlinedButton>
+                  <OutlinedButton component={RouterLink} to="/menu">
+                    Xem Thực Đơn
+                  </OutlinedButton>
                 </Box>
               </Box>
             </Box>

@@ -35,6 +35,7 @@ const FeatureMenuCard = (props: MenuCardProps) => {
       p={2}
       borderRadius={5}
       width="100%"
+      boxSizing="border-box"
       border={1}
       borderColor={Constant.COLOR_PRIMARY_LIGHT}
       fontFamily={Constant.FONT_FAMILY_MAIN}
@@ -43,7 +44,14 @@ const FeatureMenuCard = (props: MenuCardProps) => {
       <Box mb={3}>
         <div className={classes.featureImg} />
       </Box>
-      <Box mb={1} fontWeight={600} color={Constant.TEXT_DARK}>
+      <Box
+        mb={1}
+        fontWeight={600}
+        color={Constant.TEXT_DARK}
+        overflow="hidden"
+        textOverflow="ellipsis"
+        whiteSpace="nowrap"
+      >
         {name}
       </Box>
       <Box fontWeight={600} color={Constant.COLOR_PRIMARY}>

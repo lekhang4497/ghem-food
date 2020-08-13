@@ -13,9 +13,6 @@ const useStyles = makeStyles({
     paddingRight: 24,
     paddingTop: 12,
     paddingBottom: 12,
-    boxShadow:
-      "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-    textTransform: "none",
   },
 });
 
@@ -29,7 +26,7 @@ const AppButton = (props: AppButtonProps) => {
   const classes = useStyles();
   const { children } = props;
   return (
-    <Button {...props} className={classes.root}>
+    <Button {...props} className={classes.root} disableElevation>
       {children}
     </Button>
   );

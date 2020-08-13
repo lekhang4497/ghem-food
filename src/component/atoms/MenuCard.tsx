@@ -2,13 +2,13 @@ import React from "react";
 import { Box } from "@material-ui/core";
 import Constant from "../../constant/Constant";
 import { makeStyles } from "@material-ui/core/styles";
-import grey from "@material-ui/core/colors/grey";
+import { orange } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
   img: (props: MenuCardProps) => ({
     borderRadius: "50%",
-    borderWidth: 2,
-    borderColor: grey[300],
+    borderWidth: 4,
+    borderColor: orange[200],
     borderStyle: "solid",
     width: "80%",
     paddingBottom: "80%",
@@ -17,8 +17,6 @@ const useStyles = makeStyles({
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     background: `url("${props.image}") 50% 50% no-repeat`,
-    boxShadow:
-      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
   }),
 });
 
