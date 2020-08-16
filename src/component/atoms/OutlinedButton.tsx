@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     paddingRight: 24,
     paddingTop: 12,
     paddingBottom: 12,
-    backgroundColor: Constant.COLOR_PRIMARY_LIGHT,
+    background: Constant.COLOR_PRIMARY_LIGHT,
   },
 });
 

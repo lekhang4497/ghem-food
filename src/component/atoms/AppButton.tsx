@@ -26,7 +26,7 @@ const AppButton = (props: AppButtonProps) => {
   const classes = useStyles();
   const { children } = props;
   return (
-    <Button {...props} className={classes.root} disableElevation>
+    <Button {...props} className={classes.root}>
       {children}
     </Button>
   );

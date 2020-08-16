@@ -1,10 +1,8 @@
-import { faDrumstickBite } from "@fortawesome/free-solid-svg-icons";
 interface DishInformation {
   price: number;
   name: string;
   vnName: string;
   id: string;
-  haveImage: boolean;
   type: string;
 }
 const DISHES: Array<DishInformation> = [
@@ -14,7 +12,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Gà xào sả ớt",
     type: "chicken",
     id: "G001",
-    haveImage: true,
   },
   {
     price: 70,
@@ -22,7 +19,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Gà khìa nước cốt dừa",
     type: "chicken",
     id: "G002",
-    haveImage: true,
   },
   {
     price: 70,
@@ -30,7 +26,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Gà sốt muối ớt xanh",
     type: "chicken",
     id: "G003",
-    haveImage: true,
   },
   {
     price: 78,
@@ -38,7 +33,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Cánh gà chiên nước mắm",
     type: "chicken",
     id: "G004",
-    haveImage: true,
   },
   {
     price: 70,
@@ -46,7 +40,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Gà kho gừng",
     type: "chicken",
     id: "G006",
-    haveImage: true,
   },
   {
     price: 45,
@@ -54,7 +47,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Trứng chiên thịt",
     type: "egg",
     id: "G007",
-    haveImage: true,
   },
   {
     price: 62,
@@ -62,7 +54,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Trứng xào nấm",
     type: "egg",
     id: "G008",
-    haveImage: true,
   },
   {
     price: 40,
@@ -70,7 +61,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Trứng chiên cà chua",
     type: "egg",
     id: "G009",
-    haveImage: true,
   },
   {
     price: 75,
@@ -78,7 +68,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Vịt quay xào dưa cải",
     type: "duck",
     id: "G010",
-    haveImage: true,
   },
   {
     price: 70,
@@ -86,7 +75,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Vịt rang muối",
     type: "duck",
     id: "G011",
-    haveImage: true,
   },
   {
     price: 70,
@@ -94,7 +82,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Vịt rang riềng",
     type: "duck",
     id: "G012",
-    haveImage: true,
   },
   {
     price: 70,
@@ -102,7 +89,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Vịt luộc chấm mắm gừng",
     type: "duck",
     id: "G013",
-    haveImage: true,
   },
   {
     price: 75,
@@ -110,7 +96,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Vịt xào cay",
     type: "duck",
     id: "G015",
-    haveImage: true,
   },
   {
     price: 58,
@@ -118,7 +103,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Mắm chưng",
     type: "pork",
     id: "G016",
-    haveImage: true,
   },
   {
     price: 57,
@@ -126,7 +110,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "",
     type: "other",
     id: "G018",
-    haveImage: false,
   },
   {
     price: 65,
@@ -134,7 +117,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Ba rọi kho đường thốt nốt",
     type: "pork",
     id: "G019",
-    haveImage: true,
   },
   {
     price: 55,
@@ -142,7 +124,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Ba rọi xào mắm ruốc",
     type: "pork",
     id: "G021",
-    haveImage: true,
   },
   {
     price: 72,
@@ -150,7 +131,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Heo quay cháy tỏi",
     type: "pork",
     id: "G022",
-    haveImage: true,
   },
   {
     price: 65,
@@ -158,7 +138,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Ba rọi chiên sả",
     type: "pork",
     id: "G023",
-    haveImage: true,
   },
   {
     price: 75,
@@ -166,7 +145,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Sườn non ram muối tiêu chanh",
     type: "pork",
     id: "G024",
-    haveImage: true,
   },
   {
     price: 90,
@@ -174,7 +152,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Sườn xào chua ngọt",
     type: "pork",
     id: "G025",
-    haveImage: true,
   },
   {
     price: 55,
@@ -182,7 +159,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Cá trê chiên chấm nước mắm xoài",
     type: "fish",
     id: "G027",
-    haveImage: true,
   },
   {
     price: 61,
@@ -190,7 +166,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Chả cá rim nước mắm",
     type: "fish",
     id: "G028",
-    haveImage: true,
   },
   {
     price: 70.4,
@@ -198,7 +173,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Chả cá chiên giòn",
     type: "fish",
     id: "G029",
-    haveImage: true,
   },
   {
     price: 63,
@@ -206,7 +180,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Cá diêu hồng quay me",
     type: "fish",
     id: "G031",
-    haveImage: true,
   },
   {
     price: 95,
@@ -214,7 +187,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Cá diêu hồng chưng tương",
     type: "fish",
     id: "G033",
-    haveImage: true,
   },
   {
     price: 95,
@@ -222,7 +194,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "",
     type: "fish",
     id: "G034",
-    haveImage: false,
   },
   {
     price: 55,
@@ -230,7 +201,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Đậu hủ ruốc sả",
     type: "tofu",
     id: "G035",
-    haveImage: true,
   },
   {
     price: 80,
@@ -238,7 +208,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Đậu hủ sốt hải sản",
     type: "tofu",
     id: "G036",
-    haveImage: true,
   },
   {
     price: 50,
@@ -246,7 +215,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Đậu hủ chiên hành",
     type: "tofu",
     id: "G037",
-    haveImage: true,
   },
   {
     price: 55,
@@ -254,7 +222,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Đậu hủ chiên sả ớt",
     type: "tofu",
     id: "G038",
-    haveImage: true,
   },
   {
     price: 80,
@@ -262,7 +229,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Bắp bò luộc chấm mắm gừng",
     type: "beef",
     id: "G039",
-    haveImage: true,
   },
   {
     price: 75,
@@ -270,7 +236,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Gân bò xào dưa cải",
     type: "beef",
     id: "G040",
-    haveImage: true,
   },
   {
     price: 80,
@@ -278,7 +243,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Bò xào sả ớt",
     type: "beef",
     id: "G043",
-    haveImage: true,
   },
   {
     price: 85,
@@ -286,7 +250,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Bò lúc lắc",
     type: "beef",
     id: "G044",
-    haveImage: true,
   },
   {
     price: 85,
@@ -294,7 +257,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Bò sốt tiêu xanh",
     type: "beef",
     id: "G045",
-    haveImage: true,
   },
   {
     price: 87,
@@ -302,7 +264,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Gân bò hầm nấm đông cô",
     type: "beef",
     id: "G046",
-    haveImage: true,
   },
   {
     price: 75,
@@ -310,7 +271,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Nghêu rim nước mắm",
     type: "seafood",
     id: "G047",
-    haveImage: true,
   },
   {
     price: 83,
@@ -318,7 +278,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Tôm rang muối",
     type: "seafood",
     id: "G048",
-    haveImage: true,
   },
   {
     price: 87,
@@ -326,7 +285,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Mực chiên giòn",
     type: "seafood",
     id: "G049",
-    haveImage: true,
   },
   {
     price: 75,
@@ -334,7 +292,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Nghêu rim me",
     type: "seafood",
     id: "G051",
-    haveImage: true,
   },
   {
     price: 88,
@@ -342,7 +299,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Mực chiên nước mắm",
     type: "seafood",
     id: "G053",
-    haveImage: true,
   },
   {
     price: 90,
@@ -350,7 +306,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Mực hấp hành gừng",
     type: "seafood",
     id: "G055",
-    haveImage: true,
   },
   {
     price: 65,
@@ -358,7 +313,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Canh nghêu",
     type: "soup",
     id: "G056",
-    haveImage: true,
   },
   {
     price: 60,
@@ -366,7 +320,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Canh bò dưa cải",
     type: "soup",
     id: "G057",
-    haveImage: true,
   },
   {
     price: 45,
@@ -374,7 +327,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Canh đậu hủ",
     type: "soup",
     id: "G058",
-    haveImage: true,
   },
   {
     price: 65,
@@ -382,7 +334,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Canh khổ qua chả cá",
     type: "soup",
     id: "G059",
-    haveImage: true,
   },
   {
     price: 75,
@@ -390,7 +341,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Canh chua tôm",
     type: "soup",
     id: "G060",
-    haveImage: true,
   },
   {
     price: 60,
@@ -398,7 +348,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Canh cải xanh tôm",
     type: "soup",
     id: "G061",
-    haveImage: true,
   },
   {
     price: 66,
@@ -406,7 +355,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "",
     type: "soup",
     id: "G063",
-    haveImage: true,
   },
   {
     price: 66,
@@ -414,7 +362,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Canh bầu nấu tôm",
     type: "soup",
     id: "G064",
-    haveImage: true,
   },
   {
     price: 65,
@@ -422,7 +369,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Canh khổ qua đậu hủ",
     type: "soup",
     id: "G065",
-    haveImage: true,
   },
   {
     price: 67,
@@ -430,7 +376,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Canh gà lá giang",
     type: "soup",
     id: "G066",
-    haveImage: true,
   },
   {
     price: 65,
@@ -438,7 +383,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Canh nấm tàu hủ ky",
     type: "soup",
     id: "G067",
-    haveImage: true,
   },
   {
     price: 65,
@@ -446,7 +390,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Canh cải xanh chả cá",
     type: "soup",
     id: "G068",
-    haveImage: true,
   },
   {
     price: 58,
@@ -454,15 +397,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "Canh mướp nấm tôm",
     type: "soup",
     id: "G069",
-    haveImage: true,
-  },
-  {
-    price: 65,
-    name: "With five spice braised pork",
-    vnName: "",
-    type: "salad",
-    id: "G070",
-    haveImage: false,
   },
   {
     price: 75,
@@ -470,127 +404,111 @@ const DISHES: Array<DishInformation> = [
     vnName: "",
     type: "salad",
     id: "G071",
-    haveImage: false,
   },
   {
     price: 75,
     name: "With corned beef",
-    vnName: "",
+    vnName: "Nộm bắp bò",
     type: "salad",
     id: "G072",
-    haveImage: false,
   },
   {
     price: 75,
     name: "With calabash and shrimp & pork",
-    vnName: "",
+    vnName: "Gỏi bầu tôm thịt",
     type: "salad",
     id: "G073",
-    haveImage: false,
   },
   {
     price: 50,
     name: "With mushroom",
-    vnName: "",
+    vnName: "Gỏi nấm",
     type: "salad",
     id: "G074",
-    haveImage: false,
   },
   {
     price: 70,
     name: "Ghem spring rolls",
-    vnName: "",
+    vnName: "Chả giò Ghém",
     type: "salad",
     id: "G075",
-    haveImage: false,
   },
   {
     price: 45,
     name: "Stir fried vegetable with garlic",
-    vnName: "",
+    vnName: "Rau xào tỏi",
     type: "vegetables",
     id: "G076",
-    haveImage: false,
   },
   {
     price: 65,
     name: "Stir fried vegetable with beef",
-    vnName: "",
+    vnName: "Rau xào bò",
     type: "vegetables",
     id: "G077",
-    haveImage: false,
   },
   {
     price: 57,
     name: "Stir fried vegetable with fermented tofu",
-    vnName: "",
+    vnName: "Rau xào chao",
     type: "vegetables",
     id: "G078",
-    haveImage: false,
   },
   {
     price: 55,
     name: "Boiled vegetable dipped in fermented tofu Gia",
-    vnName: "",
+    vnName: "Rau củ luộc chấm chao",
     type: "vegetables",
     id: "G079",
-    haveImage: false,
   },
   {
     price: 55,
     name: "Stir fried bean sprout with pork and chilli",
-    vnName: "",
+    vnName: "Giá xào sa tế thịt băm",
     type: "vegetables",
     id: "G080",
-    haveImage: false,
   },
   {
     price: 55,
     name: "Stir fried baby corn and vegetable",
-    vnName: "",
+    vnName: "Bắp non xào rau củ",
     type: "vegetables",
     id: "G081",
-    haveImage: false,
   },
   {
     price: 10,
     name: "Steam rice in clay pot for 1 person",
     vnName: "",
-    type: "side dishes",
+    type: "side_dish",
     id: "G082",
-    haveImage: false,
   },
   {
     price: 20,
     name: "Steam rice in bowl",
     vnName: "",
-    type: "side dishes",
+    type: "side_dish",
     id: "G083",
-    haveImage: false,
   },
   {
     price: 10,
     name: "Pickled cabbage",
     vnName: "",
-    type: "side dishes",
+    type: "side_dish",
     id: "G084",
-    haveImage: false,
   },
   {
     price: 10,
     name: "Kim chi",
     vnName: "",
-    type: "side dishes",
+    type: "side_dish",
     id: "G085",
-    haveImage: false,
   },
   {
     price: 10,
     name: "Pickled aarden-egg",
     vnName: "",
-    type: "side dishes",
+    type: "side_dish",
     id: "G086",
-    haveImage: false,
   },
   {
     price: 20,
@@ -598,7 +516,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "",
     type: "dessert",
     id: "G087",
-    haveImage: false,
   },
   {
     price: 20,
@@ -606,7 +523,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "",
     type: "dessert",
     id: "G088",
-    haveImage: false,
   },
   {
     price: 20,
@@ -614,7 +530,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "",
     type: "dessert",
     id: "G089",
-    haveImage: false,
   },
   {
     price: 25,
@@ -622,7 +537,6 @@ const DISHES: Array<DishInformation> = [
     vnName: "",
     type: "dessert",
     id: "G090",
-    haveImage: false,
   },
   {
     price: 25,
@@ -630,145 +544,128 @@ const DISHES: Array<DishInformation> = [
     vnName: "",
     type: "dessert",
     id: "G091",
-    haveImage: false,
   },
   {
     price: 65,
     name: "Noodle with fried tofu & shrimp paste",
     vnName: "",
-    type: "noodle with fried tofu & shrimp paste",
+    type: "noodle_tofu",
     id: "G092",
-    haveImage: false,
   },
   {
     price: 40,
     name: "Noodle with fried tofu & fish sauce",
     vnName: "",
-    type: "noodle with fried tofu & shrimp paste",
+    type: "noodle_tofu",
     id: "G093",
-    haveImage: false,
   },
   {
     price: 45,
     name: "Noodle with boiled pork belly",
     vnName: "",
-    type: "noodle with fried tofu & shrimp paste",
+    type: "noodle_tofu",
     id: "G094",
-    haveImage: false,
   },
   {
     price: 40,
     name: "Noodle with fried tofu",
     vnName: "",
-    type: "noodle with fried tofu & shrimp paste",
+    type: "noodle_tofu",
     id: "G095",
-    haveImage: false,
   },
   {
     price: 20,
     name: "Pork roll with young green rice flakes",
     vnName: "",
-    type: "noodle with fried tofu & shrimp paste",
+    type: "noodle_tofu",
     id: "G096",
-    haveImage: false,
   },
   {
     price: 30,
     name: "Boiled pork belly",
     vnName: "",
-    type: "noodle with fried tofu & shrimp paste",
+    type: "noodle_tofu",
     id: "G097",
-    haveImage: false,
   },
   {
     price: 20,
     name: "Deep fried tofu",
     vnName: "",
-    type: "noodle with fried tofu & shrimp paste",
+    type: "noodle_tofu",
     id: "G098",
-    haveImage: false,
   },
   {
     price: 10,
     name: "Noodle",
     vnName: "",
-    type: "noodle with fried tofu & shrimp paste",
+    type: "noodle_tofu",
     id: "G099",
-    haveImage: false,
   },
   {
     price: 36,
     name: "Spring rolls with shrimp",
     vnName: "",
-    type: "noodle with fried tofu & shrimp paste",
+    type: "noodle_tofu",
     id: "G100",
-    haveImage: false,
   },
   {
     price: 80,
     name: "Mixed pork offals",
     vnName: "",
-    type: "noodle with fried tofu & shrimp paste",
+    type: "noodle_tofu",
     id: "G101",
-    haveImage: false,
   },
   {
     price: 80,
     name: "Fried pork offals",
     vnName: "",
-    type: "noodle with fried tofu & shrimp paste",
+    type: "noodle_tofu",
     id: "G102",
-    haveImage: false,
   },
   {
     price: 56,
     name: "Fried pig's pudding",
     vnName: "",
-    type: "noodle with fried tofu & shrimp paste",
+    type: "noodle_tofu",
     id: "G103",
-    haveImage: false,
   },
   {
     price: 80,
     name: "Noodle with pork stew in special-flavored soup",
     vnName: "",
-    type: "noodle with pork stew soup & field crab hot pot",
+    type: "hotpot",
     id: "G104",
-    haveImage: false,
   },
   {
     price: 90,
     name: "Not pot with field crabs",
     vnName: "",
-    type: "noodle with pork stew soup & field crab hot pot",
+    type: "hotpot",
     id: "G105",
-    haveImage: false,
   },
   {
     price: 50,
     name: "Field crabs",
     vnName: "",
-    type: "noodle with pork stew soup & field crab hot pot",
+    type: "hotpot",
     id: "G106",
-    haveImage: false,
   },
   {
     price: 15,
     name: "Unhatched duck eggs",
     vnName: "",
-    type: "noodle with pork stew soup & field crab hot pot",
+    type: "hotpot",
     id: "G107",
-    haveImage: false,
   },
   {
     price: 5,
     name: "Vegetables",
     vnName: "",
-    type: "noodle with pork stew soup & field crab hot pot",
+    type: "hotpot",
     id: "G108",
-    haveImage: false,
   },
 ];
+
 interface IngredientInformation {
   name: string;
   value: string;
@@ -805,6 +702,30 @@ const INGREDIENTS: Array<IngredientInformation> = [
   {
     name: "Cá",
     value: "fish",
+  },
+  {
+    name: "Salad",
+    value: "salad",
+  },
+  {
+    name: "Rau cải",
+    value: "vegetables",
+  },
+  {
+    name: "Lẩu",
+    value: "hotpot",
+  },
+  {
+    name: "Bún đậu",
+    value: "noodle_tofu",
+  },
+  {
+    name: "Món phụ",
+    value: "side_dish",
+  },
+  {
+    name: "Tráng miệng",
+    value: "dessert",
   },
 ];
 

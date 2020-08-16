@@ -8,6 +8,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
+import CircleImageBox from "../atoms/CircleImageBox";
 
 const useStyles = makeStyles({
   titleImg: {
@@ -31,62 +32,59 @@ const WelcomeSection = () => {
   const { t } = useTranslation();
 
   return (
-    <Box>
-      <Container maxWidth="md">
-        <Grid container spacing={3}>
-          <Grid item md={6}>
+    <Container maxWidth="md">
+      <Grid container spacing={3}>
+        <Grid item md={6}>
+          <Box
+            flexDirection="column"
+            justifyContent="center"
+            height="100%"
+            display="flex"
+          >
             <Box
-              flexDirection="column"
-              justifyContent="center"
-              height="100%"
-              display="flex"
+              fontFamily={Constant.FONT_FAMILY_MAIN}
+              fontWeight="bold"
+              color={Constant.TEXT_DARK}
+              fontSize={48}
+              textAlign="left"
+              mb={3}
             >
-              <Box
-                fontFamily={Constant.FONT_FAMILY_MAIN}
-                fontWeight="bold"
-                color={Constant.TEXT_DARK}
-                fontSize={48}
-                textAlign="left"
-                mb={3}
-              >
-                {t("welcomeEnjoy")}{" "}
-                <img
-                  src={process.env.PUBLIC_URL + "/img/logo_no_text.png"}
-                  height={58}
-                  className={classes.logoInText}
-                  alt="Ghém's logo"
-                />
+              {t("welcomeEnjoy")}{" "}
+              <img
+                src={process.env.PUBLIC_URL + "/img/logo_no_text.png"}
+                height={58}
+                className={classes.logoInText}
+                alt="Ghém's logo"
+              />
+            </Box>
+            <Typography variant="subtitle1" gutterBottom align="left">
+              {t("welcomeText")}
+            </Typography>
+            <Box mt={4} textAlign="left">
+              <Box component="span" mr={2}>
+                <AppButton component={RouterLink} to="/booking">
+                  Đặt Bàn
+                </AppButton>
               </Box>
-              <Typography variant="subtitle1" gutterBottom align="left">
-                {t("welcomeText")}
-              </Typography>
-              <Box mt={4} textAlign="left">
-                <Box component="span" mr={2}>
-                  <AppButton component={RouterLink} to="/booking">
-                    Đặt Bàn
-                  </AppButton>
-                </Box>
-                <Box component="span">
-                  <OutlinedButton component={RouterLink} to="/menu">
-                    Xem Thực Đơn
-                  </OutlinedButton>
-                </Box>
+              <Box component="span">
+                <OutlinedButton component={RouterLink} to="/menu">
+                  Xem Thực Đơn
+                </OutlinedButton>
               </Box>
             </Box>
-          </Grid>
-          <Grid item md={6} container justify="flex-end">
-            <Box
-              border={16}
-              width="80%"
-              borderRadius={"50%"}
-              borderColor={Constant.COLOR_PRIMARY_LIGHT}
-            >
-              <div className={classes.titleImg} />
-            </Box>
-          </Grid>
+          </Box>
         </Grid>
-      </Container>
-    </Box>
+        <Grid item md={6} container justify="flex-end">
+          <CircleImageBox
+            image={process.env.PUBLIC_URL + "/img/landing/avatar.png"}
+            width="80%"
+            border={16}
+            borderRadius={"50%"}
+            borderColor={Constant.COLOR_PRIMARY_LIGHT}
+          />
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

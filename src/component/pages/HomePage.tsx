@@ -4,12 +4,11 @@ import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Constant from "../../constant/Constant";
-import ReasonCard from "../atoms/ReasonCard";
+import InstructionCard from "../atoms/InstructionCard";
 import FeatureMenu from "../organisms/FeatureMenu";
 import AppNav from "../organisms/AppNavbar";
 import ProductSection from "../ProductSection";
 import FooterSection from "../organisms/FooterSection";
-import { useTranslation } from "react-i18next";
 import AppButton from "../atoms/AppButton";
 import WelcomeSection from "../organisms/WelcomeSection";
 import {
@@ -22,6 +21,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link as RouterLink } from "react-router-dom";
 import SectionTitle from "../atoms/SectionTitle";
+import InstructionSection from "../organisms/InstructionSection";
 
 const useStyles = makeStyles({
   title: {
@@ -63,8 +63,6 @@ const useStyles = makeStyles({
 
 const HomePage = () => {
   const classes = useStyles();
-  const { t } = useTranslation();
-
   return (
     <div>
       <Box className={classes.coverGradient}>
@@ -81,7 +79,7 @@ const HomePage = () => {
         <Container maxWidth="md">
           <SectionTitle text="Thực Đơn Đa Dạng" />
           <FeatureMenu />
-          <Box textAlign="right" mt={3}>
+          <Box textAlign="right" mt={2}>
             <AppButton component={RouterLink} to="/menu">
               Xem Toàn Bộ Thực Đơn
               <Box component="span" ml={1}>
@@ -98,18 +96,13 @@ const HomePage = () => {
           <ProductSection />
         </Container>
       </Box>
+
       <Box mb={16}>
         <Container maxWidth="md">
           <Box my={6}>
             <SectionTitle text="Đặt Hàng Đơn Giản" />
           </Box>
-          <Grid container spacing={3} justify="center">
-            {[faAppleAlt, faPhone, faTruck, faUtensils].map((value, idx) => (
-              <Grid item md={3} sm={6} key={idx}>
-                <ReasonCard icon={value} />
-              </Grid>
-            ))}
-          </Grid>
+          <InstructionSection />
         </Container>
       </Box>
 
