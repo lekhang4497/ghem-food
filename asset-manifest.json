@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ghem-food/static/css/main.86a8359d.chunk.css",
-    "main.js": "/ghem-food/static/js/main.4869c65c.chunk.js",
-    "main.js.map": "/ghem-food/static/js/main.4869c65c.chunk.js.map",
+    "main.js": "/ghem-food/static/js/main.8fa0a194.chunk.js",
+    "main.js.map": "/ghem-food/static/js/main.8fa0a194.chunk.js.map",
     "runtime-main.js": "/ghem-food/static/js/runtime-main.b20e5114.js",
     "runtime-main.js.map": "/ghem-food/static/js/runtime-main.b20e5114.js.map",
     "static/js/2.3b9e4528.chunk.js": "/ghem-food/static/js/2.3b9e4528.chunk.js",
     "static/js/2.3b9e4528.chunk.js.map": "/ghem-food/static/js/2.3b9e4528.chunk.js.map",
     "index.html": "/ghem-food/index.html",
-    "precache-manifest.4801aec699e2f82500241cf8bd7f59b8.js": "/ghem-food/precache-manifest.4801aec699e2f82500241cf8bd7f59b8.js",
+    "precache-manifest.de82aa4a91d99065a0ec0f061b29d3b6.js": "/ghem-food/precache-manifest.de82aa4a91d99065a0ec0f061b29d3b6.js",
     "service-worker.js": "/ghem-food/service-worker.js",
     "static/css/main.86a8359d.chunk.css.map": "/ghem-food/static/css/main.86a8359d.chunk.css.map",
     "static/js/2.3b9e4528.chunk.js.LICENSE.txt": "/ghem-food/static/js/2.3b9e4528.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.b20e5114.js",
     "static/js/2.3b9e4528.chunk.js",
     "static/css/main.86a8359d.chunk.css",
-    "static/js/main.4869c65c.chunk.js"
+    "static/js/main.8fa0a194.chunk.js"
   ]
 }
