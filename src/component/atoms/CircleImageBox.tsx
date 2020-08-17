@@ -2,14 +2,14 @@ import React from "react";
 import ImageBox from "./ImageBox";
 import { BoxProps } from "@material-ui/core";
 
-interface SquareImageBoxProps {
+interface CircleImageBoxProps {
   image: string;
   children?: any;
   width: number | string;
 }
 
 const CircleImageBox = (
-  props: SquareImageBoxProps & Omit<BoxProps, keyof SquareImageBoxProps>
+  props: CircleImageBoxProps & Omit<BoxProps, keyof CircleImageBoxProps>
 ) => {
   const { image, children, width } = props;
   return (

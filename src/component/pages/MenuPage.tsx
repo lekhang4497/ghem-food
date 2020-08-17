@@ -57,6 +57,8 @@ const MenuPage = () => {
                   <Box>
                     <Paper style={{overflow: 'hidden'}} variant='outlined'>
                     <ImageButton
+                      width="100%"
+                      height={120}
                       image={`${process.env.PUBLIC_URL}/img/dishes/${item.value}/avatar.jpg`}
                       text={item.name}
                       active={item.value === ingredient}

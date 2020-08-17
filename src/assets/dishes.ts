@@ -168,7 +168,7 @@ const DISHES: Array<DishInformation> = [
     id: "G028",
   },
   {
-    price: 70.4,
+    price: 70,
     name: "Deep fried fish cake",
     vnName: "Chả cá chiên giòn",
     type: "fish",

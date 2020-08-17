@@ -20,7 +20,7 @@ const InstructionCard = ({ icon, name, description }: InstructionCardProps) => (
     fontFamily={Constant.FONT_FAMILY_MAIN}
     height="100%"
     boxSizing="border-box"
-    boxShadow="0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+    boxShadow="0 2px 6px rgba(0, 21, 64, 0.14), 0 10px 20px rgba(0, 21, 64, 0.05)"
   >
     <Box mb={3}>
       <FontAwesomeIcon icon={icon} size="3x" color={Constant.COLOR_PRIMARY} />

@@ -1,19 +1,13 @@
 import React from "react";
-import { Box, ButtonBase, createStyles, Theme } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import {Box, ButtonBase, createStyles, Theme} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
 import Constant from "../../constant/Constant";
+import ImageBox from "./ImageBox";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      display: "flex",
-      flexWrap: "wrap",
-      minWidth: 300,
-      width: "100%",
-    },
     image: {
       position: "relative",
-      height: 150,
       [theme.breakpoints.down("xs")]: {
         width: "100% !important", // Overrides inline-style
         height: 100,
@@ -67,15 +61,6 @@ const useStyles = makeStyles((theme: Theme) =>
         theme.spacing(1) + 6
       }px`,
     },
-    imageMarked: {
-      height: 3,
-      width: 18,
-      backgroundColor: theme.palette.common.white,
-      position: "absolute",
-      bottom: -2,
-      left: "calc(50% - 9px)",
-      transition: theme.transitions.create("opacity"),
-    },
   })
 );
 
@@ -84,40 +69,44 @@ interface ImageButtonProps {
   text: string;
   onClick: () => void;
   active: boolean;
+  width: number | string;
+  height: number | string;
 }
 
 const ImageButton = (props: ImageButtonProps) => {
   const classes = useStyles(props);
-  const { text, image, onClick, active } = props;
+  const {text, image, onClick, active, width, height} = props;
   return (
     <ButtonBase
       focusRipple
       className={classes.image}
       focusVisibleClassName={classes.focusVisible}
       style={{
-        width: "100%",
+        width,
+        height
       }}
       onClick={onClick}
     >
-      <span
-        className={classes.imageSrc}
-        style={{
-          backgroundImage: `url(${image})`,
-          backgroundColor: Constant.COLOR_PRIMARY_LIGHT_TRANS,
-        }}
-      />
-      {!active && <span className={classes.imageBackdrop} />}
-      {!active && (
-        <span className={classes.imageButton}>
+      <ImageBox image={image} width="100%" height="100%">
+        {!active && <span className={classes.imageBackdrop}/>}
+        {!active && (
           <Box
             fontFamily={Constant.FONT_FAMILY_BEAUTY}
             fontSize={36}
             color={"white"}
+            position="absolute"
+            left={0}
+            right={0}
+            top={0}
+            bottom={0}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
           >
             {text}
           </Box>
-        </span>
-      )}
+        )}
+      </ImageBox>
     </ButtonBase>
   );
 };

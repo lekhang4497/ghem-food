@@ -1,14 +1,14 @@
-import { Box, BoxProps } from "@material-ui/core";
+import {Box, BoxProps} from "@material-ui/core";
 import Constant from "../../constant/Constant";
 import React from "react";
 
-interface ImageBoxProps extends BoxProps {
+interface ImageBoxProps {
   children?: any;
   image: string;
 }
 
-const ImageBox = (props: ImageBoxProps) => {
-  const { image, children } = props;
+const ImageBox = (props: ImageBoxProps & Omit<BoxProps, keyof ImageBoxProps>) => {
+  const {image, children} = props;
   return (
     <Box {...props} position="relative" overflow="hidden">
       <span

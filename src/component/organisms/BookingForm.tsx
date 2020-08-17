@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Field, Form, Formik, useFormikContext } from "formik";
+import {Field, Form, Formik, useFormikContext} from "formik";
 import {
   Box,
   Button,
@@ -11,20 +11,14 @@ import {
   DialogTitle,
   Grid,
 } from "@material-ui/core";
-import { TextField } from "formik-material-ui";
+import {TextField} from "formik-material-ui";
 import * as Yup from "yup";
-import { DatePicker, TimePicker } from "formik-material-ui-pickers";
+import {DateTimePicker} from "formik-material-ui-pickers";
 import DateFnsUtils from "@date-io/date-fns";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import {MuiPickersUtilsProvider} from "@material-ui/pickers";
 import AppButton from "../atoms/AppButton";
-
-interface Values {
-  name: string;
-  phone: string;
-  numberSeat?: number;
-  bookingDate?: Date;
-  bookingTime?: Date;
-}
+import {BookingInformation, BookingRequest, BookingResponse, bookTable} from "../../service/BookingService";
+import {AxiosResponse} from "axios";
 
 const phoneRegex: string = [
   "^(840|84|0|)8(1|2|3|4|5|6|7|8|9)\\d{7}$",
@@ -42,12 +36,11 @@ const FormSchema = Yup.object().shape({
     .max(50, "Vui lòng nhập dưới 50 ký tự!")
     .required("Vui lòng nhập tên người đặt bàn"),
   phone: Yup.string().matches(phoneRegExp, "Số điện thọai không hợp lệ"),
-  bookingDate: Yup.date().required("Vui lòng chọn ngày đặt bàn"),
-  bookingTime: Yup.date().required("Vui lòng chọn giờ đặt bàn"),
+  bookingTime: Yup.date().required("Vui lòng chọn thời gian đặt bàn"),
 });
 
 const FormContent = () => {
-  const { submitForm, isSubmitting } = useFormikContext();
+  const {submitForm, isSubmitting} = useFormikContext();
   return (
     <Form>
       <Grid container spacing={3}>
@@ -73,35 +66,34 @@ const FormContent = () => {
             fullWidth
           />
         </Grid>
+        <Grid item xs={6}/>
+        <Grid item xs={6}>
+          <Field
+            component={DateTimePicker}
+            name="bookingTime"
+            label="Đặt bàn lúc"
+            inputVariant="outlined"
+            variant="inline"
+            fullWidth
+          />
+        </Grid>
         <Grid item xs={6}>
           <Field
             component={TextField}
             type="number"
-            name="numberSeat"
+            name="numberOfPeople"
             label="Số người"
             variant="outlined"
             fullWidth
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <Field
-            component={DatePicker}
-            name="bookingDate"
-            disableToolbar
-            variant="inline"
-            format="dd/MM/yyyy"
-            label="Đặt bàn ngày"
-            inputVariant="outlined"
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <Field
-            component={TimePicker}
-            name="bookingTime"
-            label="Đặt bàn lúc"
-            inputVariant="outlined"
-            variant="inline"
+            component={TextField}
+            type="text"
+            name="note"
+            label="Ghi chú thêm"
+            variant="outlined"
             fullWidth
           />
         </Grid>
@@ -120,7 +112,7 @@ const FormContent = () => {
       <Box textAlign="left" fontSize={12} fontStyle="italic">
         Các thông tin * là bắt buộc
       </Box>{" "}
-      <Box my={2}>{isSubmitting && <CircularProgress />}</Box>
+      <Box my={2}>{isSubmitting && <CircularProgress/>}</Box>
     </Form>
   );
 };
@@ -140,19 +132,28 @@ const BookingForm = () => {
         initialValues={{
           name: "",
           phone: "",
-          bookingDate: new Date(),
           bookingTime: new Date(),
         }}
         validationSchema={FormSchema}
-        onSubmit={(values: Values, { setSubmitting }) => {
-          setTimeout(() => {
-            setSubmitting(false);
+        onSubmit={async (booking: BookingInformation, {setSubmitting}) => {
+          setSubmitting(true);
+          console.log(booking);
+          const req: BookingRequest = {
+            phoneNumber: booking.phone,
+            customerName: booking.name,
+            bookingTime: booking.bookingTime.getTime(),
+            numberOfPeople: booking.numberOfPeople,
+            note: booking.note
+          };
+          const res: AxiosResponse<BookingResponse> = await bookTable(req);
+          setSubmitting(false);
+          console.log(res);
+          if (res.data.code === 1) {
             handleOpenDialog();
-            console.log(values);
-          }, 300);
+          }
         }}
       >
-        <FormContent />
+        <FormContent/>
       </Formik>
       <Dialog open={showDialog} onClose={handleCloseDialog}>
         <DialogTitle>Đặt bàn thành công</DialogTitle>

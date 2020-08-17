@@ -1,12 +1,12 @@
 import Box from "@material-ui/core/Box";
-import { Tab, Tabs } from "@material-ui/core";
+import {Tab, Tabs} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import FeatureMenuCard from "../atoms/FeatureMenuCard";
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 import Constant from "../../constant/Constant";
 import grey from "@material-ui/core/colors/grey";
-import { DISHES, INGREDIENT_MAP, INGREDIENTS } from "../../assets/dishes";
+import {DISHES, INGREDIENT_MAP, INGREDIENTS} from "../../assets/dishes";
 
 const useStyles = makeStyles({
   root: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 });
 const ingredients = INGREDIENTS;
 
-const DishPanel = ({ ingredient }: { ingredient: string }) => {
+const DishPanel = ({ingredient}: { ingredient: string }) => {
   let dishes = INGREDIENT_MAP.get(ingredient);
   if (!dishes || dishes.length < 3) {
     dishes = [DISHES[0], DISHES[1], DISHES[2]];
@@ -44,7 +44,7 @@ const DishPanel = ({ ingredient }: { ingredient: string }) => {
       container
       justify="center"
       spacing={4}
-      style={{ height: "100%" }}
+      style={{height: "100%"}}
       alignItems="center"
     >
       {dishes.map((dish) => (
@@ -75,13 +75,14 @@ const FeatureMenu = () => {
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"
-          classes={{ indicator: classes.tabIndicator }}
+          classes={{indicator: classes.tabIndicator}}
           indicatorColor="primary"
         >
           {ingredients.map((item) => (
             <Tab
               key={item.value}
               label={`Món ${item.name}`}
+              style={{width: 240}}
               classes={{
                 wrapper: classes.tab,
                 selected: classes.tabSelected,
@@ -92,7 +93,7 @@ const FeatureMenu = () => {
         </Tabs>
       </Box>
       <Box flexGrow={1}>
-        <DishPanel ingredient={ingredients[value].value} />
+        <DishPanel ingredient={ingredients[value].value}/>
       </Box>
     </Box>
   );

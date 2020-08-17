@@ -36,7 +36,7 @@ const instructions: Array<InstructionCardProps> = [
 
 const InstructionSection = () => {
   return (
-    <Grid container spacing={2} justify="center">
+    <Grid container spacing={3} justify="center">
       {instructions.map((item, idx) => (
         <Grid item md={3} sm={6} key={idx}>
           <InstructionCard
