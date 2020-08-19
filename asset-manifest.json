@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/ghem-food/static/css/main.86a8359d.chunk.css",
-    "main.js": "/ghem-food/static/js/main.1604bcd4.chunk.js",
-    "main.js.map": "/ghem-food/static/js/main.1604bcd4.chunk.js.map",
+    "main.js": "/ghem-food/static/js/main.14bb2252.chunk.js",
+    "main.js.map": "/ghem-food/static/js/main.14bb2252.chunk.js.map",
     "runtime-main.js": "/ghem-food/static/js/runtime-main.b20e5114.js",
     "runtime-main.js.map": "/ghem-food/static/js/runtime-main.b20e5114.js.map",
-    "static/js/2.3b9e4528.chunk.js": "/ghem-food/static/js/2.3b9e4528.chunk.js",
-    "static/js/2.3b9e4528.chunk.js.map": "/ghem-food/static/js/2.3b9e4528.chunk.js.map",
+    "static/js/2.2e10bdf8.chunk.js": "/ghem-food/static/js/2.2e10bdf8.chunk.js",
+    "static/js/2.2e10bdf8.chunk.js.map": "/ghem-food/static/js/2.2e10bdf8.chunk.js.map",
     "index.html": "/ghem-food/index.html",
-    "precache-manifest.a41d2dce6369f0ae3b7aaac29b6ecc40.js": "/ghem-food/precache-manifest.a41d2dce6369f0ae3b7aaac29b6ecc40.js",
+    "precache-manifest.cd7768ee5d6a702e0771574f4d09ea12.js": "/ghem-food/precache-manifest.cd7768ee5d6a702e0771574f4d09ea12.js",
     "service-worker.js": "/ghem-food/service-worker.js",
     "static/css/main.86a8359d.chunk.css.map": "/ghem-food/static/css/main.86a8359d.chunk.css.map",
-    "static/js/2.3b9e4528.chunk.js.LICENSE.txt": "/ghem-food/static/js/2.3b9e4528.chunk.js.LICENSE.txt"
+    "static/js/2.2e10bdf8.chunk.js.LICENSE.txt": "/ghem-food/static/js/2.2e10bdf8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b20e5114.js",
-    "static/js/2.3b9e4528.chunk.js",
+    "static/js/2.2e10bdf8.chunk.js",
     "static/css/main.86a8359d.chunk.css",
-    "static/js/main.1604bcd4.chunk.js"
+    "static/js/main.14bb2252.chunk.js"
   ]
 }
