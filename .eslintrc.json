@@ -8,7 +8,9 @@
         "google",
         "prettier",
         "prettier/react",
-        "prettier/@typescript-eslint"
+        "prettier/@typescript-eslint",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {

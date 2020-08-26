@@ -29,7 +29,7 @@ const FooterSection = () => {
               color={Constant.TEXT_DARK}
               textAlign="left"
             >
-              Contact
+              Liên hệ
             </Box>
             <Box
               mb={2}

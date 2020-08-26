@@ -3,6 +3,7 @@ import Box from "@material-ui/core/Box";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Constant from "../../constant/Constant";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import {grey, orange} from "@material-ui/core/colors";
 
 export interface InstructionCardProps {
   icon: IconProp;
@@ -16,11 +17,11 @@ const InstructionCard = ({ icon, name, description }: InstructionCardProps) => (
     borderRadius={5}
     p={4}
     border={1}
-    borderColor={Constant.COLOR_PRIMARY_LIGHT}
+    borderColor={grey[200]}
     fontFamily={Constant.FONT_FAMILY_MAIN}
     height="100%"
     boxSizing="border-box"
-    boxShadow="0 2px 6px rgba(0, 21, 64, 0.14), 0 10px 20px rgba(0, 21, 64, 0.05)"
+    // boxShadow="0 2px 6px rgba(0, 21, 64, 0.14), 0 10px 20px rgba(0, 21, 64, 0.05)"
   >
     <Box mb={3}>
       <FontAwesomeIcon icon={icon} size="3x" color={Constant.COLOR_PRIMARY} />

@@ -3,6 +3,9 @@ import "./App.css";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Constant from "./constant/Constant";
 import AppRoot from "./component/AppRoot";
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-175557450-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const theme = createMuiTheme({
   typography: {

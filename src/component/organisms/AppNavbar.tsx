@@ -8,10 +8,11 @@ import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles({
   menuItem: {
-    fontWeight: "bold",
+    transition: "color 300ms",
+    fontWeight: 700,
     color: Constant.TEXT_SECONDARY,
     "&:hover": {
-      color: Constant.TEXT_DARK,
+      color: Constant.COLOR_PRIMARY,
       textDecoration: "none",
     },
   },

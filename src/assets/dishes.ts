@@ -743,4 +743,33 @@ DISHES.forEach((dish) => {
   }
 });
 
-export { INGREDIENTS, DISHES, INGREDIENT_MAP };
+export interface ComboInformation {
+  name: string;
+  value: string;
+  description: string;
+}
+
+const COMBOS: Array<ComboInformation> = [
+  {
+    name: "Combo Tiện Lợi",
+    value: "convenient",
+    description: "Hai bữa trưa và tối chỉ 196,000 VND.",
+  },
+  {
+    name: "Combo Gia Đình",
+    value: "family",
+    description: "Hai bữa trưa và tối cho cả nhà 2-4 người chỉ 380,000 VND.",
+  },
+  {
+    name: "Combo Tiệc",
+    value: "party",
+    description: "Combo tiệc tại nhà với các món chính, món lẩu, món gỏi",
+  },
+  {
+    name: "Combo Cuối Tuần",
+    value: "weekend",
+    description: "Lẩu và 2 món ăn cho cả nhà 2-4 người chỉ 360,000 VND",
+  },
+];
+
+export { INGREDIENTS, DISHES, INGREDIENT_MAP, COMBOS };

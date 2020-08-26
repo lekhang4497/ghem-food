@@ -2,18 +2,13 @@ import Box from "@material-ui/core/Box";
 import React from "react";
 import Constant from "../../constant/Constant";
 import ImageBox from "./ImageBox";
+import { ComboInformation } from "../../assets/dishes";
 
-export interface ProductCardProps {
-  name: string;
-  description: string;
-  image: string;
-}
-
-const ProductCard = ({ name, description, image }: ProductCardProps) => {
+const ProductCard = ({ name, description, value }: ComboInformation) => {
   return (
     <Box overflow="hidden" width="100%" fontFamily={Constant.FONT_FAMILY_MAIN}>
       <ImageBox
-        image={image}
+        image={`${process.env.PUBLIC_URL}/img/combo/${value}.jpg`}
         mb={2}
         width="100%"
         paddingBottom="66%"

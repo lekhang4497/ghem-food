@@ -2,7 +2,7 @@ import Constant from "../../constant/Constant";
 import Box from "@material-ui/core/Box";
 import React from "react";
 import CircleImageBox from "./CircleImageBox";
-import { orange } from "@material-ui/core/colors";
+import {grey, orange} from "@material-ui/core/colors";
 
 interface MenuCardProps {
   image: string;
@@ -19,9 +19,9 @@ const FeatureMenuCard = ({ name, price, image }: MenuCardProps) => {
       width="100%"
       boxSizing="border-box"
       border={1}
-      borderColor={Constant.COLOR_PRIMARY_LIGHT}
+      borderColor={grey[200]}
       fontFamily={Constant.FONT_FAMILY_MAIN}
-      boxShadow="0 2px 6px rgba(0, 21, 64, 0.14), 0 10px 20px rgba(0, 21, 64, 0.05)"
+      // boxShadow="0 2px 6px rgba(0, 21, 64, 0.14), 0 10px 20px rgba(0, 21, 64, 0.05)"
     >
       <CircleImageBox
         image={image}
@@ -29,7 +29,7 @@ const FeatureMenuCard = ({ name, price, image }: MenuCardProps) => {
         margin="auto"
         border={2}
         borderRadius={"50%"}
-        borderColor={orange[200]}
+        borderColor={grey[200]}
         mb={3}
       />
       <Box

@@ -1,23 +1,15 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
 import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Constant from "../../constant/Constant";
-import InstructionCard from "../atoms/InstructionCard";
 import FeatureMenu from "../organisms/FeatureMenu";
 import AppNav from "../organisms/AppNavbar";
-import ProductSection from "../ProductSection";
+import ProductSection from "../organisms/ProductSection";
 import FooterSection from "../organisms/FooterSection";
 import AppButton from "../atoms/AppButton";
 import WelcomeSection from "../organisms/WelcomeSection";
-import {
-  faAppleAlt,
-  faArrowRight,
-  faPhone,
-  faTruck,
-  faUtensils,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link as RouterLink } from "react-router-dom";
 import SectionTitle from "../atoms/SectionTitle";
@@ -61,7 +53,7 @@ const useStyles = makeStyles({
   },
 });
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   const classes = useStyles();
   return (
     <div>
