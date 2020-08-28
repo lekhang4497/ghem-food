@@ -1,5 +1,14 @@
 import React from "react";
-import { Box } from "@material-ui/core";
+import {
+  Avatar,
+  Box,
+  Dialog,
+  DialogTitle,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+} from "@material-ui/core";
 import Constant from "../../constant/Constant";
 import { orange } from "@material-ui/core/colors";
 import CircleImageBox from "./CircleImageBox";
@@ -8,11 +17,14 @@ interface MenuCardProps {
   image: string;
   name: string;
   price: number;
+  width?: number | string;
 }
 
-const MenuCard = ({ name, price, image }: MenuCardProps) => {
+
+
+const MenuCard = ({ name, price, image, width = "100%" }: MenuCardProps) => {
   return (
-    <Box>
+    <Box width={width}>
       <CircleImageBox
         image={image}
         width="80%"

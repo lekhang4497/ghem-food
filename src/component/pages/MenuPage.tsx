@@ -1,5 +1,17 @@
 import React, { useState } from "react";
-import {Box, Container, Paper} from "@material-ui/core";
+import {
+  Avatar,
+  Box,
+  ButtonBase,
+  Container,
+  Dialog,
+  Divider,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Paper,
+} from "@material-ui/core";
 import AppNav from "../organisms/AppNavbar";
 import Grid from "@material-ui/core/Grid";
 import MenuCard from "../atoms/MenuCard";
@@ -7,7 +19,16 @@ import Constant from "../../constant/Constant";
 import { makeStyles } from "@material-ui/core/styles";
 import FooterSection from "../organisms/FooterSection";
 import ImageButton from "../atoms/ImageButton";
-import { DISHES, INGREDIENT_MAP, INGREDIENTS } from "../../assets/dishes";
+import {
+  DISHES,
+  DishInformation,
+  INGREDIENT_MAP,
+  INGREDIENTS,
+} from "../../assets/dishes";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { green, orange, red } from "@material-ui/core/colors";
+import CircleImageBox from "../atoms/CircleImageBox";
 
 const useStyles = makeStyles({
   logoInText: {
@@ -18,9 +39,67 @@ const useStyles = makeStyles({
   },
 });
 
+interface ChooseDishDialogProps {
+  onConfirm: () => void;
+  onClose: () => void;
+  dish: DishInformation;
+  open: boolean;
+}
+
+const ChooseDishDialog = ({
+  onClose,
+  dish,
+  open,
+  onConfirm,
+}: ChooseDishDialogProps) => {
+  return (
+    <Dialog open={open} onClose={onClose} fullWidth={true} maxWidth="sm">
+      <CircleImageBox
+        image={`${process.env.PUBLIC_URL}/img/dishes/${dish.type}/${dish.id}.jpg`}
+        width="50%"
+        margin="auto"
+        border={4}
+        borderRadius={"50%"}
+        borderColor={orange[200]}
+        mt={3}
+      />
+      <List>
+        <ListItem>
+          <ListItemText
+            primary={dish.vnName}
+            secondary={`${dish.price}.000 VND`}
+            style={{ textAlign: "center" }}
+          />
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListItem button onClick={onConfirm}>
+          <ListItemAvatar>
+            <Avatar style={{ backgroundColor: green[400] }}>
+              <FontAwesomeIcon icon={faCartPlus} />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Thêm vào giỏ hàng" />
+        </ListItem>
+        <ListItem button onClick={onClose}>
+          <ListItemAvatar>
+            <Avatar style={{ backgroundColor: red[400] }}>
+              <FontAwesomeIcon icon={faTimes} />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Huỷ" />
+        </ListItem>
+      </List>
+    </Dialog>
+  );
+};
+
 const MenuPage = () => {
   const classes = useStyles();
   const [ingredient, setIngredient] = useState(INGREDIENTS[0].value);
+  const [openConfirmDialog, setOpenConfirmDialog] = useState<boolean>(false);
+  const [chooseDish, setChooseDish] = useState<DishInformation>(DISHES[0]);
   let dishes = INGREDIENT_MAP.get(ingredient);
   if (!dishes) {
     dishes = DISHES;
@@ -55,15 +134,15 @@ const MenuPage = () => {
               {INGREDIENTS.map((item) => (
                 <Grid item md={2} key={item.name}>
                   <Box>
-                    <Paper style={{overflow: 'hidden'}} variant='outlined'>
-                    <ImageButton
-                      width="100%"
-                      height={120}
-                      image={`${process.env.PUBLIC_URL}/img/dishes/${item.value}/avatar.jpg`}
-                      text={item.name}
-                      active={item.value === ingredient}
-                      onClick={() => setIngredient(item.value)}
-                    />
+                    <Paper style={{ overflow: "hidden" }} variant="outlined">
+                      <ImageButton
+                        width="100%"
+                        height={120}
+                        image={`${process.env.PUBLIC_URL}/img/dishes/${item.value}/avatar.jpg`}
+                        text={item.name}
+                        active={item.value === ingredient}
+                        onClick={() => setIngredient(item.value)}
+                      />
                     </Paper>
                   </Box>
                 </Grid>
@@ -73,20 +152,36 @@ const MenuPage = () => {
           <Grid container spacing={4} justify="center">
             {dishes.map((item) => (
               <Grid item md={2} key={item.id}>
-                <MenuCard
-                  image={
-                    process.env.PUBLIC_URL +
-                    `/img/dishes/${item.type}/${item.id}.jpg`
-                  }
-                  name={item.vnName}
-                  price={item.price}
-                />
+                <ButtonBase
+                  style={{ width: "100%" }}
+                  onClick={() => {
+                    setChooseDish(item);
+                    setOpenConfirmDialog(true);
+                  }}
+                >
+                  <MenuCard
+                    image={
+                      process.env.PUBLIC_URL +
+                      `/img/dishes/${item.type}/${item.id}.jpg`
+                    }
+                    name={item.vnName}
+                    price={item.price}
+                  />
+                </ButtonBase>
               </Grid>
             ))}
           </Grid>
         </Container>
       </Box>
       <FooterSection />
+      <ChooseDishDialog
+        open={openConfirmDialog}
+        onClose={() => setOpenConfirmDialog(false)}
+        onConfirm={() => {
+          setOpenConfirmDialog(false);
+        }}
+        dish={chooseDish}
+      />
     </Box>
   );
 };

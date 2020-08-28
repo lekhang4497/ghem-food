@@ -1,10 +1,11 @@
-interface DishInformation {
+export interface DishInformation {
   price: number;
   name: string;
   vnName: string;
   id: string;
   type: string;
 }
+
 const DISHES: Array<DishInformation> = [
   {
     price: 70,

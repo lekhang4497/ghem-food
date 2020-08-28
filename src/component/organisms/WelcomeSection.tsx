@@ -32,7 +32,6 @@ const WelcomeSection = () => {
   const { t } = useTranslation();
 
   return (
-    <Container maxWidth="md">
       <Grid container spacing={3}>
         <Grid item md={6}>
           <Box
@@ -84,7 +83,6 @@ const WelcomeSection = () => {
           />
         </Grid>
       </Grid>
-    </Container>
   );
 };
 

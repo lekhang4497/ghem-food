@@ -1,6 +1,5 @@
 import React from "react";
 import { Container } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Constant from "../../constant/Constant";
 import FeatureMenu from "../organisms/FeatureMenu";
@@ -14,61 +13,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link as RouterLink } from "react-router-dom";
 import SectionTitle from "../atoms/SectionTitle";
 import InstructionSection from "../organisms/InstructionSection";
+import AboutSection from "../organisms/AboutSection";
 
-const useStyles = makeStyles({
-  title: {
-    fontFamily: Constant.FONT_FAMILY_MAIN,
-    fontWeight: "bold",
-    color: Constant.TEXT_DARK,
-  },
-  titleImg: {
-    borderRadius: "50%",
-    maxWidth: "100%",
-    background: `url("${
-      process.env.PUBLIC_URL + "/img/landing/avatar.png"
-    }") 50% 50% no-repeat`,
-    backgroundSize: "cover",
-    width: "100%",
-    paddingBottom: "100%",
-    backgroundColor: Constant.COLOR_PRIMARY,
-  },
-  titleImgWrapper: {
-    borderColor: Constant.COLOR_PRIMARY_LIGHT,
-    borderWidth: 16,
-    borderStyle: "solid",
-  },
-  menuItem: {
-    fontWeight: "bold",
-    color: "#757575",
-    "&:hover": {
-      color: "#424242",
-      textDecoration: "none",
-    },
-  },
-  coverGradient: {
-    background: `linear-gradient(135deg, ${Constant.COLOR_PRIMARY_LIGHT}, #fff, #fff)`,
-  },
-  logoInText: {
-    verticalAlign: "middle",
-  },
-});
+const BACKGROUND_GRADIENT = `linear-gradient(135deg, ${Constant.COLOR_PRIMARY_LIGHT}, #fff, #fff)`;
 
 const HomePage: React.FC = () => {
-  const classes = useStyles();
   return (
     <div>
-      <Box className={classes.coverGradient}>
-        <Box mb={8}>
-          <AppNav />
-        </Box>
-
-        <Box pb={8}>
-          <WelcomeSection />
-        </Box>
+      <Box
+        pb={8}
+        style={{
+          background: BACKGROUND_GRADIENT,
+        }}
+      >
+        <AppNav />
+        <Container maxWidth="md">
+          <Box mt={8}>
+            <WelcomeSection />
+          </Box>
+        </Container>
       </Box>
 
-      <Box mb={16} mt={12}>
-        <Container maxWidth="md">
+      <Container maxWidth="md">
+
+        <Box mb={16} mt={16}>
+          {/*<SectionTitle text="Ngon Khoẻ Cùng Ghém" />*/}
+          <AboutSection />
+        </Box>
+
+        <Box mb={16}>
           <SectionTitle text="Thực Đơn Đa Dạng" />
           <FeatureMenu />
           <Box textAlign="right" mt={2}>
@@ -79,24 +52,18 @@ const HomePage: React.FC = () => {
               </Box>
             </AppButton>
           </Box>
-        </Container>
-      </Box>
+        </Box>
 
-      <Box mb={16}>
-        <Container maxWidth="md">
+        <Box mb={16}>
           <SectionTitle text="Gói Combo Ưu Đãi" />
           <ProductSection />
-        </Container>
-      </Box>
+        </Box>
 
-      <Box mb={16}>
-        <Container maxWidth="md">
-          <Box my={6}>
-            <SectionTitle text="Đặt Hàng Đơn Giản" />
-          </Box>
+        <Box mb={16}>
+          <SectionTitle text="Đặt Hàng Đơn Giản" />
           <InstructionSection />
-        </Container>
-      </Box>
+        </Box>
+      </Container>
 
       <FooterSection />
     </div>
