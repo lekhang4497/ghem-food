@@ -38,7 +38,7 @@ const InstructionSection = () => {
   return (
     <Grid container spacing={2} justify="center">
       {instructions.map((item, idx) => (
-        <Grid item md={3} sm={6} key={idx}>
+        <Grid item md={3} sm={6} xs={12} key={idx}>
           <InstructionCard
             icon={item.icon}
             name={item.name}

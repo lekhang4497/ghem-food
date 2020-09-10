@@ -6,11 +6,18 @@ import {
   Container,
   Dialog,
   Divider,
+  FormControl,
+  Hidden,
+  InputLabel,
   List,
   ListItem,
   ListItemAvatar,
   ListItemText,
+  MenuItem,
   Paper,
+  Select,
+  useMediaQuery,
+  useTheme,
 } from "@material-ui/core";
 import AppNav from "../organisms/AppNavbar";
 import Grid from "@material-ui/core/Grid";
@@ -97,6 +104,8 @@ const ChooseDishDialog = ({
 
 const MenuPage = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
   const [ingredient, setIngredient] = useState(INGREDIENTS[0].value);
   const [openConfirmDialog, setOpenConfirmDialog] = useState<boolean>(false);
   const [chooseDish, setChooseDish] = useState<DishInformation>(DISHES[0]);
@@ -113,13 +122,13 @@ const MenuPage = () => {
             fontFamily={Constant.FONT_FAMILY_BEAUTY}
             fontStyle="italic"
             color={Constant.TEXT_SECONDARY}
-            fontSize={72}
+            fontSize={isSmDown ? 36 : 72}
             mt={16}
             pb={12}
           >
             <img
               src={process.env.PUBLIC_URL + "/img/logo_no_text.png"}
-              height={128}
+              height={isSmDown ? 64 : 128}
               className={classes.logoInText}
               alt="Ghem's logo"
             />{" "}
@@ -129,29 +138,50 @@ const MenuPage = () => {
       </Box>
       <Box mb={16}>
         <Container maxWidth="lg">
-          <Box mb={8}>
-            <Grid container spacing={2} justify="center">
-              {INGREDIENTS.map((item) => (
-                <Grid item md={2} key={item.name}>
-                  <Box>
-                    <Paper style={{ overflow: "hidden" }} variant="outlined">
-                      <ImageButton
-                        width="100%"
-                        height={120}
-                        image={`${process.env.PUBLIC_URL}/img/dishes/${item.value}/avatar.jpg`}
-                        text={item.name}
-                        active={item.value === ingredient}
-                        onClick={() => setIngredient(item.value)}
-                      />
-                    </Paper>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
+          <Hidden smDown>
+            <Box mb={8}>
+              <Grid container spacing={2} justify="center">
+                {INGREDIENTS.map((item) => (
+                  <Grid item md={2} key={item.name}>
+                    <Box>
+                      <Paper style={{ overflow: "hidden" }} variant="outlined">
+                        <ImageButton
+                          width="100%"
+                          height={120}
+                          image={`${process.env.PUBLIC_URL}/img/dishes/${item.value}/avatar.jpg`}
+                          text={item.name}
+                          active={item.value === ingredient}
+                          onClick={() => setIngredient(item.value)}
+                        />
+                      </Paper>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          </Hidden>
+          <Hidden mdUp>
+            <Box mb={3}>
+              <FormControl fullWidth>
+                <InputLabel>Loại món ăn</InputLabel>
+                <Select
+                  value={ingredient}
+                  onChange={(event) =>
+                    setIngredient(event.target.value as string)
+                  }
+                >
+                  {INGREDIENTS.map((item) => (
+                    <MenuItem key={item.value} value={item.value}>
+                      {item.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
+          </Hidden>
           <Grid container spacing={4} justify="center">
             {dishes.map((item) => (
-              <Grid item md={2} key={item.id}>
+              <Grid item md={2} xs={6} key={item.id}>
                 <ButtonBase
                   style={{ width: "100%" }}
                   onClick={() => {

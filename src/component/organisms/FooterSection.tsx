@@ -37,7 +37,7 @@ const FooterSection = () => {
               color={Constant.TEXT_SECONDARY}
               textAlign="left"
             >
-              +84 1677 46 03 04
+              (+84) 377 46 03 04
             </Box>
             <Box
               mb={2}

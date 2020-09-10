@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+import {Container, useMediaQuery, useTheme} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Constant from "../../constant/Constant";
 import FeatureMenu from "../organisms/FeatureMenu";
@@ -18,6 +18,9 @@ import AboutSection from "../organisms/AboutSection";
 const BACKGROUND_GRADIENT = `linear-gradient(135deg, ${Constant.COLOR_PRIMARY_LIGHT}, #fff, #fff)`;
 
 const HomePage: React.FC = () => {
+  const theme = useTheme();
+  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const sectionBreak = isSmDown ? 8 : 16;
   return (
     <div>
       <Box
@@ -36,15 +39,14 @@ const HomePage: React.FC = () => {
 
       <Container maxWidth="md">
 
-        <Box mb={16} mt={16}>
-          {/*<SectionTitle text="Ngon Khoẻ Cùng Ghém" />*/}
+        <Box mb={sectionBreak} mt={sectionBreak}>
           <AboutSection />
         </Box>
 
-        <Box mb={16}>
+        <Box mb={sectionBreak}>
           <SectionTitle text="Thực Đơn Đa Dạng" />
           <FeatureMenu />
-          <Box textAlign="right" mt={2}>
+          <Box textAlign={isSmDown ? "center" : "right"} mt={2}>
             <AppButton component={RouterLink} to="/menu">
               Xem Toàn Bộ Thực Đơn
               <Box component="span" ml={1}>
@@ -54,12 +56,12 @@ const HomePage: React.FC = () => {
           </Box>
         </Box>
 
-        <Box mb={16}>
+        <Box mb={sectionBreak}>
           <SectionTitle text="Gói Combo Ưu Đãi" />
           <ProductSection />
         </Box>
 
-        <Box mb={16}>
+        <Box mb={sectionBreak}>
           <SectionTitle text="Đặt Hàng Đơn Giản" />
           <InstructionSection />
         </Box>

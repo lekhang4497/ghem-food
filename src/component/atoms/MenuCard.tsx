@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Avatar,
-  Box,
-  Dialog,
-  DialogTitle,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-} from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import Constant from "../../constant/Constant";
 import { orange } from "@material-ui/core/colors";
 import CircleImageBox from "./CircleImageBox";
@@ -19,8 +10,6 @@ interface MenuCardProps {
   price: number;
   width?: number | string;
 }
-
-
 
 const MenuCard = ({ name, price, image, width = "100%" }: MenuCardProps) => {
   return (
@@ -38,7 +27,7 @@ const MenuCard = ({ name, price, image, width = "100%" }: MenuCardProps) => {
         {name}
       </Box>
       <Box fontWeight={700} color={Constant.COLOR_PRIMARY}>
-        {`${price}.000 VND`}
+        {`${price.toLocaleString()} VND`}
       </Box>
     </Box>
   );

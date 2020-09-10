@@ -1,5 +1,5 @@
 import Box from "@material-ui/core/Box";
-import { Tab, Tabs } from "@material-ui/core";
+import { Tab, Tabs, useMediaQuery, useTheme } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import FeatureMenuCard from "../atoms/FeatureMenuCard";
 import React from "react";
@@ -9,10 +9,13 @@ import grey from "@material-ui/core/colors/grey";
 import { DISHES, INGREDIENT_MAP, INGREDIENTS } from "../../assets/dishes";
 
 const useStyles = makeStyles({
-  root: {
+  tabVertical: {
     display: "flex",
     height: 320,
     width: 240,
+  },
+  tabHorizontal: {
+    backgroundColor: Constant.COLOR_PRIMARY_LIGHT_TRANS,
   },
   tab: {
     alignItems: "flex-start",
@@ -33,11 +36,14 @@ const useStyles = makeStyles({
 const ingredients = INGREDIENTS;
 
 const DishPanel = ({ ingredient }: { ingredient: string }) => {
+  const theme = useTheme();
+  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const numDish = isSmDown ? 4 : 3;
   let dishes = INGREDIENT_MAP.get(ingredient);
-  if (!dishes || dishes.length < 3) {
-    dishes = [DISHES[0], DISHES[1], DISHES[2]];
-  } else {
-    dishes = [dishes[0], dishes[1], dishes[2]];
+  if (!dishes) {
+    dishes = DISHES.slice(0, numDish);
+  } else if (dishes.length > numDish) {
+    dishes = dishes.slice(0, numDish);
   }
   return (
     <Grid
@@ -48,7 +54,7 @@ const DishPanel = ({ ingredient }: { ingredient: string }) => {
       alignItems="center"
     >
       {dishes.map((dish) => (
-        <Grid item sm={4} container justify="center" key={dish.id}>
+        <Grid item sm={4} xs={6} container justify="center" key={dish.id}>
           <FeatureMenuCard
             image={`${process.env.PUBLIC_URL}/img/dishes/${ingredient}/${dish.id}.jpg`}
             name={dish.vnName}
@@ -62,6 +68,8 @@ const DishPanel = ({ ingredient }: { ingredient: string }) => {
 
 const FeatureMenu: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
   const [value, setValue] = React.useState<number>(0);
   const handleChange = (
     event: React.ChangeEvent<unknown>,
@@ -70,26 +78,31 @@ const FeatureMenu: React.FC = () => {
     setValue(newValue);
   };
   return (
-    <Box display={"flex"}>
-      <Box className={classes.root}>
+    <Box display={isSmDown ? "block" : "flex"}>
+      <Box
+        className={isSmDown ? classes.tabHorizontal : classes.tabVertical}
+        mb={isSmDown ? 3 : 0}
+      >
         <Tabs
-          orientation="vertical"
+          orientation={isSmDown ? "horizontal" : "vertical"}
           variant="scrollable"
           value={value}
           onChange={handleChange}
-          aria-label="Vertical tabs example"
-          classes={{ indicator: classes.tabIndicator }}
+          scrollButtons="auto"
+          classes={{ indicator: isSmDown ? undefined : classes.tabIndicator }}
           indicatorColor="primary"
         >
           {ingredients.map((item) => (
             <Tab
               key={item.value}
               label={`Món ${item.name}`}
-              style={{ width: 240 }}
+              style={{ width: isSmDown ? "auto" : 240 }}
               classes={{
                 wrapper: classes.tab,
                 selected: classes.tabSelected,
-                textColorInherit: classes.textColorInherit,
+                textColorInherit: isSmDown
+                  ? undefined
+                  : classes.textColorInherit,
               }}
             />
           ))}

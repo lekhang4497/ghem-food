@@ -13,8 +13,8 @@ const ProductSection = () => {
     <Box>
       <Grid container justify="center" spacing={4}>
         {products.map((product, idx) => (
-          <Grid key={product.name} item sm={3} justify="center">
-            <ButtonBase component={RouterLink} to="/combo" disableRipple>
+          <Grid key={product.name} item md={3} sm={6} xs={12} justify="center">
+            <ButtonBase component={RouterLink} to="/combo" disableRipple style={{width: "100%"}}>
               <ProductCard {...product} />
             </ButtonBase>
           </Grid>
