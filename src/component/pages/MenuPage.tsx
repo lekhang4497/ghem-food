@@ -123,8 +123,8 @@ const MenuPage = () => {
             fontStyle="italic"
             color={Constant.TEXT_SECONDARY}
             fontSize={isSmDown ? 36 : 72}
-            mt={16}
-            pb={12}
+            mt={isSmDown ? 4 : 16}
+            pb={isSmDown ? 4 : 12}
           >
             <img
               src={process.env.PUBLIC_URL + "/img/logo_no_text.png"}
@@ -142,7 +142,17 @@ const MenuPage = () => {
             <Box mb={8}>
               <Grid container spacing={2} justify="center">
                 {INGREDIENTS.map((item) => (
-                  <Grid item md={2} key={item.name}>
+                  <Grid
+                    item
+                    md={
+                      item.value === "hotpot" ||
+                      item.value === "party" ||
+                      item.value === "dessert"
+                        ? 4
+                        : 2
+                    }
+                    key={item.name}
+                  >
                     <Box>
                       <Paper style={{ overflow: "hidden" }} variant="outlined">
                         <ImageButton
@@ -162,9 +172,10 @@ const MenuPage = () => {
           </Hidden>
           <Hidden mdUp>
             <Box mb={3}>
-              <FormControl fullWidth>
+              <FormControl fullWidth variant="filled">
                 <InputLabel>Loại món ăn</InputLabel>
                 <Select
+                  native
                   value={ingredient}
                   onChange={(event) =>
                     setIngredient(event.target.value as string)
@@ -192,7 +203,7 @@ const MenuPage = () => {
                   <MenuCard
                     image={
                       process.env.PUBLIC_URL +
-                      `/img/dishes/${item.type}/${item.id}.jpg`
+                      `/img/dishes/${item.type}/${item.image}.jpg`
                     }
                     name={item.vnName}
                     price={item.price}

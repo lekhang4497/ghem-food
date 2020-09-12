@@ -56,7 +56,7 @@ const DishPanel = ({ ingredient }: { ingredient: string }) => {
       {dishes.map((dish) => (
         <Grid item sm={4} xs={6} container justify="center" key={dish.id}>
           <FeatureMenuCard
-            image={`${process.env.PUBLIC_URL}/img/dishes/${ingredient}/${dish.id}.jpg`}
+            image={`${process.env.PUBLIC_URL}/img/dishes/${ingredient}/${dish.image}.jpg`}
             name={dish.vnName}
             price={dish.price}
           />

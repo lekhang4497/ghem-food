@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container } from "@material-ui/core";
+import { Box, Container, useMediaQuery, useTheme } from "@material-ui/core";
 import AppNav from "../organisms/AppNavbar";
 import Constant from "../../constant/Constant";
 import { makeStyles } from "@material-ui/core/styles";
@@ -17,6 +17,8 @@ const useStyles = makeStyles({
 
 const ComboPage = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Box>
       <Box className={classes.coverGradient}>
@@ -26,13 +28,13 @@ const ComboPage = () => {
             fontFamily={Constant.FONT_FAMILY_BEAUTY}
             fontStyle="italic"
             color={Constant.TEXT_SECONDARY}
-            fontSize={72}
-            mt={16}
-            pb={12}
+            fontSize={isSmDown ? 36 : 72}
+            mt={isSmDown ? 4 : 16}
+            pb={isSmDown ? 4 : 12}
           >
             <img
               src={process.env.PUBLIC_URL + "/img/logo_no_text.png"}
-              height={128}
+              height={isSmDown ? 64 : 128}
               className={classes.logoInText}
               alt="Ghem's logo"
             />{" "}
@@ -51,7 +53,7 @@ const ComboPage = () => {
               mb={6}
             >
               <img
-                style={{ width: "100%" }}
+                style={{ width: "100%", display: "block" }}
                 src={`${process.env.PUBLIC_URL}/img/combo/poster/${combo.value}.png`}
                 alt={combo.value}
               />
