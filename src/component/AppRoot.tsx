@@ -7,31 +7,38 @@ import Constant from "../constant/Constant";
 import BookingPage from "./pages/BookingPage";
 import ComboPage from "./pages/ComboPage";
 import ScrollToTop from "./ScrollToTop";
+import { CartProvider } from "../store/CartStore";
+import CartPage from "./pages/CartPage";
 
 const AppRoot = () => {
   return (
-    <Box fontFamily={Constant.FONT_FAMILY_MAIN}>
-      <Router>
-        <ScrollToTop />
-        <Switch>
-          <Route path="/about">
-            <div>about</div>
-          </Route>
-          <Route path="/menu">
-            <MenuPage />
-          </Route>
-          <Route path="/combo">
-            <ComboPage />
-          </Route>
-          <Route path="/booking">
-            <BookingPage />
-          </Route>
-          <Route path="/">
-            <HomePage />
-          </Route>
-        </Switch>
-      </Router>
-    </Box>
+    <CartProvider>
+      <Box fontFamily={Constant.FONT_FAMILY_MAIN}>
+        <Router>
+          <ScrollToTop />
+          <Switch>
+            <Route path="/about">
+              <div>about</div>
+            </Route>
+            <Route path="/menu">
+              <MenuPage />
+            </Route>
+            <Route path="/combo">
+              <ComboPage />
+            </Route>
+            <Route path="/booking">
+              <BookingPage />
+            </Route>
+            <Route path="/cart">
+              <CartPage />
+            </Route>
+            <Route path="/">
+              <HomePage />
+            </Route>
+          </Switch>
+        </Router>
+      </Box>
+    </CartProvider>
   );
 };
 

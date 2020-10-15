@@ -10,4 +10,5 @@ export default {
   COLOR_PRIMARY_LIGHT_TRANS: "rgba(255, 243, 224,0.5)",
   FONT_FAMILY_BEAUTY: "Lobster",
   FONT_FAMILY_MAIN: "Open Sans",
+  LOCAL_STORAGE_CART: "cart_details"
 };

@@ -3,7 +3,7 @@ import Box from "@material-ui/core/Box";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Constant from "../../constant/Constant";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import {grey, orange} from "@material-ui/core/colors";
+import { grey } from "@material-ui/core/colors";
 
 export interface InstructionCardProps {
   icon: IconProp;

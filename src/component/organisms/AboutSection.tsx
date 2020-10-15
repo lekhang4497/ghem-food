@@ -1,14 +1,11 @@
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Constant from "../../constant/Constant";
-import { Container, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import AppButton from "../atoms/AppButton";
-import OutlinedButton from "../atoms/OutlinedButton";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
-import CircleImageBox from "../atoms/CircleImageBox";
 
 const useStyles = makeStyles({
   titleImg: {
@@ -38,7 +35,7 @@ const AboutSection = () => {
             maxWidth: "100%",
             borderRadius: 10,
             opacity: 0.9,
-            boxSizing: "border-box"
+            boxSizing: "border-box",
           }}
           src={process.env.PUBLIC_URL + "/img/landing/delivery_demo.jpg"}
         />

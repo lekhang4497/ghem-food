@@ -1,12 +1,7 @@
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Constant from "../../constant/Constant";
-import {
-  Container, Hidden,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@material-ui/core";
+import { Hidden, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import AppButton from "../atoms/AppButton";
 import OutlinedButton from "../atoms/OutlinedButton";
 import React from "react";
@@ -61,20 +56,24 @@ const WelcomeSection = () => {
               alt="Ghém's logo"
             />
           </Box>
-          <Typography variant="subtitle1" gutterBottom align={isSmDown ? "center" : "left"}>
+          <Typography
+            variant="subtitle1"
+            gutterBottom
+            align={isSmDown ? "center" : "left"}
+          >
             {t("welcomeText")}
           </Typography>
 
           <Hidden mdUp>
-              <CircleImageBox
-                image={process.env.PUBLIC_URL + "/img/landing/avatar.png"}
-                width="80%"
-                border={12}
-                borderRadius={"50%"}
-                borderColor={Constant.COLOR_PRIMARY_LIGHT}
-                margin="auto"
-                mt={2}
-              />
+            <CircleImageBox
+              image={process.env.PUBLIC_URL + "/img/landing/avatar.png"}
+              width="80%"
+              border={12}
+              borderRadius={"50%"}
+              borderColor={Constant.COLOR_PRIMARY_LIGHT}
+              margin="auto"
+              mt={2}
+            />
           </Hidden>
           <Box mt={4} textAlign={isSmDown ? "center" : "left"}>
             <Box component="span" mr={2}>
@@ -91,15 +90,15 @@ const WelcomeSection = () => {
         </Box>
       </Grid>
       <Hidden smDown>
-      <Grid item md={6} container justify={isSmDown ? "center" : "flex-end"}>
-        <CircleImageBox
-          image={process.env.PUBLIC_URL + "/img/landing/avatar.png"}
-          width="80%"
-          border={16}
-          borderRadius={"50%"}
-          borderColor={Constant.COLOR_PRIMARY_LIGHT}
-        />
-      </Grid>
+        <Grid item md={6} container justify={isSmDown ? "center" : "flex-end"}>
+          <CircleImageBox
+            image={process.env.PUBLIC_URL + "/img/landing/avatar.png"}
+            width="80%"
+            border={16}
+            borderRadius={"50%"}
+            borderColor={Constant.COLOR_PRIMARY_LIGHT}
+          />
+        </Grid>
       </Hidden>
     </Grid>
   );

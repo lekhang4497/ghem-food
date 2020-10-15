@@ -925,15 +925,15 @@ const INGREDIENTS: Array<IngredientInformation> = [
   },
 ];
 
-const INGREDIENT_MAP: Map<string, Array<DishInformation>> = new Map<
-  string,
-  Array<DishInformation>
->();
+const INGREDIENT_MAP: Record<string, Array<DishInformation>> = {};
 
-INGREDIENTS.forEach((item) => INGREDIENT_MAP.set(item.value, []));
+const DISH_MAP: Record<string, DishInformation> = {};
+
+INGREDIENTS.forEach((item) => (INGREDIENT_MAP[item.value] = []));
 
 DISHES.forEach((dish) => {
-  const a = INGREDIENT_MAP.get(dish.type);
+  const a = INGREDIENT_MAP[dish.type];
+  DISH_MAP[dish.id] = dish;
   if (a) {
     a.push(dish);
   }
@@ -968,4 +968,4 @@ const COMBOS: Array<ComboInformation> = [
   },
 ];
 
-export { INGREDIENTS, DISHES, INGREDIENT_MAP, COMBOS };
+export { INGREDIENTS, DISHES, INGREDIENT_MAP, COMBOS, DISH_MAP };

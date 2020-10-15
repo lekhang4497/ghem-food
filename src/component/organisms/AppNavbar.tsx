@@ -1,4 +1,5 @@
 import {
+  Badge,
   Container,
   Drawer,
   Hidden,
@@ -7,16 +8,18 @@ import {
   List,
   ListItem,
   ListItemText,
-  useMediaQuery, useTheme,
+  useMediaQuery,
+  useTheme,
 } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Constant from "../../constant/Constant";
-import React, {useState} from "react";
-import {makeStyles} from "@material-ui/core/styles";
-import {Link as RouterLink} from "react-router-dom";
-import {faBars} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import React, { useContext, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link as RouterLink } from "react-router-dom";
+import { faBars, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CartContext, cartStore } from "../../store/CartStore";
 
 const useStyles = makeStyles({
   menuItem: {
@@ -52,8 +55,9 @@ const menu = [
 const AppNav = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const isSmDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+  const { cartState } = useContext<CartContext>(cartStore);
   return (
     <Box>
       <Container maxWidth="md">
@@ -84,12 +88,26 @@ const AppNav = () => {
                       </Link>
                     </Grid>
                   ))}
+                  <Grid item>
+                    <Link
+                      to="/cart"
+                      className={classes.menuItem}
+                      component={RouterLink}
+                    >
+                      <Badge
+                        badgeContent={Object.keys(cartState.items).length}
+                        color="error"
+                      >
+                        <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+                      </Badge>
+                    </Link>
+                  </Grid>
                 </Hidden>
 
                 <Hidden mdUp>
                   <Box mr={1}>
                     <IconButton onClick={() => setOpenDrawer(true)}>
-                      <FontAwesomeIcon icon={faBars}  />
+                      <FontAwesomeIcon icon={faBars} />
                     </IconButton>
                   </Box>
                 </Hidden>
@@ -104,14 +122,19 @@ const AppNav = () => {
         onClose={() => setOpenDrawer(false)}
       >
         <Box width={250}>
-        <List>
-          {menu.map((item) => (
-            <ListItem button component={RouterLink} to={item.to}  key={item.name}>
-              <ListItemText primary={item.name} />
-            </ListItem>
-          ))}
-        </List>
-    </Box>
+          <List>
+            {menu.map((item) => (
+              <ListItem
+                button
+                component={RouterLink}
+                to={item.to}
+                key={item.name}
+              >
+                <ListItemText primary={item.name} />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
       </Drawer>
     </Box>
   );

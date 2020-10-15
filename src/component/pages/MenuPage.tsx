@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Avatar,
   Box,
+  Button,
   ButtonBase,
+  ButtonGroup,
   Container,
   Dialog,
   Divider,
@@ -33,9 +35,15 @@ import {
   INGREDIENTS,
 } from "../../assets/dishes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartPlus,
+  faMinus,
+  faPlus,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 import { green, orange, red } from "@material-ui/core/colors";
 import CircleImageBox from "../atoms/CircleImageBox";
+import { CartActionType, CartContext, cartStore } from "../../store/CartStore";
 
 const useStyles = makeStyles({
   logoInText: {
@@ -47,22 +55,25 @@ const useStyles = makeStyles({
 });
 
 interface ChooseDishDialogProps {
-  onConfirm: () => void;
   onClose: () => void;
   dish: DishInformation;
   open: boolean;
 }
 
-const ChooseDishDialog = ({
-  onClose,
-  dish,
-  open,
-  onConfirm,
-}: ChooseDishDialogProps) => {
+const ChooseDishDialog = ({ onClose, dish, open }: ChooseDishDialogProps) => {
+  const [quantity, setQuantity] = useState<number>(0);
+  const cartContext = useContext<CartContext>(cartStore);
+  const { cartDispatch } = cartContext;
+  useEffect(() => {
+    const { cartState } = cartContext;
+    const item = cartState.items[dish.id];
+    const initQuantity = item ? item.quantity : 0;
+    setQuantity(initQuantity);
+  }, [dish, cartContext]);
   return (
     <Dialog open={open} onClose={onClose} fullWidth={true} maxWidth="sm">
       <CircleImageBox
-        image={`${process.env.PUBLIC_URL}/img/dishes/${dish.type}/${dish.id}.jpg`}
+        image={`${process.env.PUBLIC_URL}/img/dishes/${dish.type}/${dish.image}.jpg`}
         width="50%"
         margin="auto"
         border={4}
@@ -73,15 +84,36 @@ const ChooseDishDialog = ({
       <List>
         <ListItem>
           <ListItemText
-            primary={dish.vnName}
-            secondary={`${dish.price}.000 VND`}
+            primary={dish.vnName + " " + dish.id}
+            secondary={`${dish.price.toLocaleString()} VND`}
             style={{ textAlign: "center" }}
           />
         </ListItem>
       </List>
+      <Box fontWeight={400} my={3} justifyContent="center" display="flex">
+        <ButtonGroup>
+          <Button onClick={() => setQuantity(quantity - 1)}>
+            <FontAwesomeIcon icon={faMinus} />
+          </Button>
+          <Button>{quantity}</Button>
+          <Button onClick={() => setQuantity(quantity + 1)}>
+            <FontAwesomeIcon icon={faPlus} />
+          </Button>
+        </ButtonGroup>
+      </Box>
       <Divider />
       <List>
-        <ListItem button onClick={onConfirm}>
+        <ListItem
+          button
+          onClick={() => {
+            cartDispatch({
+              type: CartActionType.UPDATE,
+              dishId: dish.id,
+              quantity: quantity,
+            });
+            onClose();
+          }}
+        >
           <ListItemAvatar>
             <Avatar style={{ backgroundColor: green[400] }}>
               <FontAwesomeIcon icon={faCartPlus} />
@@ -109,10 +141,12 @@ const MenuPage = () => {
   const [ingredient, setIngredient] = useState(INGREDIENTS[0].value);
   const [openConfirmDialog, setOpenConfirmDialog] = useState<boolean>(false);
   const [chooseDish, setChooseDish] = useState<DishInformation>(DISHES[0]);
-  let dishes = INGREDIENT_MAP.get(ingredient);
+  let dishes = INGREDIENT_MAP[ingredient];
   if (!dishes) {
     dishes = DISHES;
   }
+  // useEffect(() => {
+  // }, [chooseDish]);
   return (
     <Box>
       <Box className={classes.coverGradient}>
@@ -218,9 +252,6 @@ const MenuPage = () => {
       <ChooseDishDialog
         open={openConfirmDialog}
         onClose={() => setOpenConfirmDialog(false)}
-        onConfirm={() => {
-          setOpenConfirmDialog(false);
-        }}
         dish={chooseDish}
       />
     </Box>

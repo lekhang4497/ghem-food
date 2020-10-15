@@ -39,7 +39,7 @@ const DishPanel = ({ ingredient }: { ingredient: string }) => {
   const theme = useTheme();
   const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
   const numDish = isSmDown ? 4 : 3;
-  let dishes = INGREDIENT_MAP.get(ingredient);
+  let dishes = INGREDIENT_MAP[ingredient];
   if (!dishes) {
     dishes = DISHES.slice(0, numDish);
   } else if (dishes.length > numDish) {
