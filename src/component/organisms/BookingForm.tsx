@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Field, Form, Formik, useFormikContext} from "formik";
+import { Field, Form, Formik, useFormikContext } from "formik";
 import {
   Box,
   Button,
@@ -11,24 +11,22 @@ import {
   DialogTitle,
   Grid,
 } from "@material-ui/core";
-import {TextField} from "formik-material-ui";
+import { TextField } from "formik-material-ui";
 import * as Yup from "yup";
-import {DateTimePicker} from "formik-material-ui-pickers";
+import { DateTimePicker } from "formik-material-ui-pickers";
 import DateFnsUtils from "@date-io/date-fns";
-import {MuiPickersUtilsProvider} from "@material-ui/pickers";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import AppButton from "../atoms/AppButton";
-import {BookingInformation, BookingRequest, BookingResponse, bookTable} from "../../service/BookingService";
-import {AxiosResponse} from "axios";
+import {
+  BookingInformation,
+  BookingRequest,
+  BookingResponse,
+  bookTable,
+} from "../../service/BookingService";
+import { AxiosResponse } from "axios";
+import Constant from "../../constant/Constant";
 
-const phoneRegex: string = [
-  "^(840|84|0|)8(1|2|3|4|5|6|7|8|9)\\d{7}$",
-  "(840|84|0|)9\\d{8}",
-  "^(840|84|0|)5(2|6|8|9)\\d{7}$",
-  "(840|84|0|)7(0|6|7|8|9)\\d{7}",
-  "(840|84|0|)3[2-9]\\d{7}",
-].join("|");
-
-const phoneRegExp: RegExp = new RegExp(phoneRegex);
+const phoneRegExp = new RegExp(Constant.PHONE_REGEX);
 
 const FormSchema = Yup.object().shape({
   name: Yup.string()
@@ -40,7 +38,7 @@ const FormSchema = Yup.object().shape({
 });
 
 const FormContent = () => {
-  const {submitForm, isSubmitting} = useFormikContext();
+  const { submitForm, isSubmitting } = useFormikContext();
   return (
     <Form>
       <Grid container spacing={3}>
@@ -66,7 +64,7 @@ const FormContent = () => {
             fullWidth
           />
         </Grid>
-        <Grid item xs={6}/>
+        <Grid item xs={6} />
         <Grid item xs={6}>
           <Field
             component={DateTimePicker}
@@ -112,7 +110,7 @@ const FormContent = () => {
       <Box textAlign="left" fontSize={12} fontStyle="italic">
         Các thông tin * là bắt buộc
       </Box>{" "}
-      <Box my={2}>{isSubmitting && <CircularProgress/>}</Box>
+      <Box my={2}>{isSubmitting && <CircularProgress />}</Box>
     </Form>
   );
 };
@@ -135,7 +133,7 @@ const BookingForm = () => {
           bookingTime: new Date(),
         }}
         validationSchema={FormSchema}
-        onSubmit={async (booking: BookingInformation, {setSubmitting}) => {
+        onSubmit={async (booking: BookingInformation, { setSubmitting }) => {
           setSubmitting(true);
           console.log(booking);
           const req: BookingRequest = {
@@ -143,7 +141,7 @@ const BookingForm = () => {
             customerName: booking.name,
             bookingTime: booking.bookingTime.getTime(),
             numberOfPeople: booking.numberOfPeople,
-            note: booking.note
+            note: booking.note,
           };
           const res: AxiosResponse<BookingResponse> = await bookTable(req);
           setSubmitting(false);
@@ -153,7 +151,7 @@ const BookingForm = () => {
           }
         }}
       >
-        <FormContent/>
+        <FormContent />
       </Formik>
       <Dialog open={showDialog} onClose={handleCloseDialog}>
         <DialogTitle>Đặt bàn thành công</DialogTitle>

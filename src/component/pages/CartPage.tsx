@@ -1,7 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   Box,
   Container,
+  Dialog,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Grid,
   Paper,
   Table,
   TableBody,
@@ -9,17 +14,19 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  useMediaQuery,
-  useTheme,
 } from "@material-ui/core";
-import AppNav from "../organisms/AppNavbar";
+import { useHistory } from "react-router-dom";
+import { TextField } from "formik-material-ui";
 import Constant from "../../constant/Constant";
 import { makeStyles } from "@material-ui/core/styles";
-import FooterSection from "../organisms/FooterSection";
-import { COMBOS, DISH_MAP, DishInformation } from "../../assets/dishes";
+import { DISH_MAP, DishInformation } from "../../assets/dishes";
+import { Field, Form, Formik, FormikProps, useFormikContext } from "formik";
+import * as Yup from "yup";
+import AppNav from "../organisms/AppNavbar";
 import { CartContext, cartStore } from "../../store/CartStore";
-import { orange } from "@material-ui/core/colors";
-import CircleImageBox from "../atoms/CircleImageBox";
+import FooterSection from "../organisms/FooterSection";
+import AppButton from "../atoms/AppButton";
+import OutlinedButton from "../atoms/OutlinedButton";
 
 const useStyles = makeStyles({
   logoInText: {
@@ -30,12 +37,117 @@ const useStyles = makeStyles({
   },
 });
 
+interface DeliveryConfirmDialogProps {
+  onClose: () => void;
+  open: boolean;
+}
+
+const phoneRegExp = new RegExp(Constant.PHONE_REGEX);
+
+const FormSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Vui lòng nhập trên 2 ký tự!")
+    .max(50, "Vui lòng nhập dưới 50 ký tự!"),
+  phone: Yup.string()
+    .matches(phoneRegExp, "Số điện thọai không hợp lệ")
+    .required("Vui lòng nhập số điện thoại để nhân viên giao hàng liên hệ"),
+  address: Yup.string()
+    .min(10, "Vui lòng nhập đúng địa chỉ")
+    .required("Vui lòng nhập địa chỉ giao hàng"),
+});
+
+const DeliveryFormContent = () => {
+  const { submitForm, isSubmitting } = useFormikContext();
+  return (
+    <Form>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Field
+            component={TextField}
+            type="text"
+            name="name"
+            label="Họ tên"
+            variant="outlined"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Field
+            component={TextField}
+            required
+            type="text"
+            name="phone"
+            label="Số điện thoại"
+            variant="outlined"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Field
+            component={TextField}
+            required
+            type="text"
+            name="address"
+            label="Địa chỉ giao hàng"
+            variant="outlined"
+            fullWidth
+          />
+        </Grid>
+      </Grid>
+    </Form>
+  );
+};
+
+const DeliveryConfirmDialog = ({
+  onClose,
+  open,
+}: DeliveryConfirmDialogProps) => {
+  const history = useHistory();
+  return (
+    <Formik
+      initialValues={{
+        name: "",
+        phone: "",
+        address: "",
+      }}
+      validationSchema={FormSchema}
+      onSubmit={async (deliveryInfo, { setSubmitting }) => {
+        console.log(deliveryInfo);
+        history.push("/delivery-result");
+      }}
+    >
+      {({ submitForm }: FormikProps<any>) => (
+        <Dialog open={open} onClose={onClose}>
+          <DialogTitle>Thông tin giao hàng</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Vui lòng nhập thông tin giao hàng
+            </DialogContentText>
+            <DeliveryFormContent />
+            <Box textAlign="center" my={2}>
+              <Box mr={1} component="span">
+                <OutlinedButton onClick={onClose}>
+                  Xem lại giỏ hàng
+                </OutlinedButton>
+              </Box>
+              <AppButton onClick={submitForm} color="primary">
+                Đặt hàng
+              </AppButton>
+            </Box>
+          </DialogContent>
+        </Dialog>
+      )}
+    </Formik>
+  );
+};
+
 const CartPage = () => {
   const classes = useStyles();
+  const [deliverDialogOpen, setDeliverDialogOpen] = useState<boolean>(false);
   const { cartState } = useContext<CartContext>(cartStore);
   const items = cartState.items;
-  let total = 0
-  Object.values(items).forEach(items => {
+  let total = 0;
+  Object.values(items).forEach((items) => {
     total += DISH_MAP[items.dishId].price * items.quantity;
   });
   return (
@@ -81,15 +193,28 @@ const CartPage = () => {
                   );
                 })}
                 <TableRow>
-                  <TableCell align="right" colSpan={4} ><b>Tổng thanh toán</b></TableCell>
-                  <TableCell align="right"><b>{`${total.toLocaleString()} VND`}</b></TableCell>
+                  <TableCell align="right" colSpan={4}>
+                    <b>Tổng thanh toán</b>
+                  </TableCell>
+                  <TableCell align="right">
+                    <b>{`${total.toLocaleString()} VND`}</b>
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>
           </TableContainer>
+          <Box textAlign="right" mt={2}>
+            <AppButton onClick={() => setDeliverDialogOpen(true)}>
+              Đặt hàng ngay
+            </AppButton>
+          </Box>
         </Container>
       </Box>
       <FooterSection />
+      <DeliveryConfirmDialog
+        onClose={() => setDeliverDialogOpen(false)}
+        open={deliverDialogOpen}
+      />
     </Box>
   );
 };

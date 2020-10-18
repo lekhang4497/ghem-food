@@ -9,6 +9,7 @@ import ComboPage from "./pages/ComboPage";
 import ScrollToTop from "./ScrollToTop";
 import { CartProvider } from "../store/CartStore";
 import CartPage from "./pages/CartPage";
+import DeliveryResultPage from "./pages/DeliveryResultPage";
 
 const AppRoot = () => {
   return (
@@ -31,6 +32,9 @@ const AppRoot = () => {
             </Route>
             <Route path="/cart">
               <CartPage />
+            </Route>
+            <Route path="/delivery-result">
+              <DeliveryResultPage />
             </Route>
             <Route path="/">
               <HomePage />
