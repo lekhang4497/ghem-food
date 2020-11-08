@@ -2,7 +2,7 @@
   "name": "ghem-food",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://lekhang4497.github.io/ghem-food",
+  "homepage": "http://www.ghemsaigon.com",
   "dependencies": {
     "@auth0/auth0-react": "^1.1.0",
     "@date-io/date-fns": "^1.3.13",
