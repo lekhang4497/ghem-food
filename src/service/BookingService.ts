@@ -1,7 +1,7 @@
 import axios, {AxiosResponse} from "axios";
 
 const URL = process.env.REACT_APP_API_URL;
-const BOOKING_PATH = process.env.REACT_APP_API_BOOKING_PATH;
+const PATH = process.env.REACT_APP_API_BOOKING_PATH;
 
 export interface BookingFormValue {
   name: string;
@@ -37,17 +37,18 @@ export interface GetBookingResponse {
 export interface BookingResponse {
   code: number;
   message: string;
+  bookingId: string;
 }
 
 export const bookTable = async (
   booking: BookingInfo
 ): Promise<AxiosResponse<BookingResponse>> => {
-  const url = String(URL) + String(BOOKING_PATH);
+  const url = String(URL) + String(PATH);
   return await axios.post(url, booking);
 };
 
 export const getBooking = async (year: number, month: number, date: number): Promise<AxiosResponse<GetBookingResponse>> => {
-  const url = String(URL) + String(BOOKING_PATH);
+  const url = String(URL) + String(PATH);
   return await axios.get(url, {
     params: {
       year, month, date

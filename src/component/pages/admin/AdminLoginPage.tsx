@@ -4,7 +4,9 @@ import { FC } from "react";
 
 const AdminLoginPage: FC = () => {
   const { loginWithRedirect } = useAuth0();
-  loginWithRedirect();
+  loginWithRedirect({
+    redirectUri: process.env.REACT_APP_ADMIN_REDIRECT_URL
+  });
   return <div>Redirecting to GHEM Admin...</div>;
 };
 

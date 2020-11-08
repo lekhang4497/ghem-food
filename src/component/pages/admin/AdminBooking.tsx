@@ -36,7 +36,7 @@ const AdminBooking: FC = () => {
       const queryDate = selectedDate !== null ? selectedDate : moment();
       const res: AxiosResponse<GetBookingResponse> = await getBooking(
         queryDate.year(),
-        queryDate.month(),
+        queryDate.month() + 1,
         queryDate.date()
       );
       if (res.data.code === 1) {

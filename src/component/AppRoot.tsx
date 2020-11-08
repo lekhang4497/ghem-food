@@ -21,6 +21,7 @@ import AdminPage from "./pages/admin/AdminPage";
 import {Auth0Provider, useAuth0} from "@auth0/auth0-react";
 import {createMuiTheme, ThemeProvider} from "@material-ui/core/styles";
 import {green} from "@material-ui/core/colors";
+import BookingResultPage from "./pages/BookingResultPage";
 
 // eslint-disable-next-line react/prop-types
 export const PrivateRoute: FC<RouteProps> = ({ children, ...rest }) => {
@@ -79,6 +80,9 @@ const AppRoot = () => {
             </Route>
             <Route path="/delivery-result/:deliveryId">
               <DeliveryResultPage />
+            </Route>
+            <Route path="/booking-result/:bookingId">
+              <BookingResultPage />
             </Route>
             <Route path="/admin/login">
               <AdminLoginPage />

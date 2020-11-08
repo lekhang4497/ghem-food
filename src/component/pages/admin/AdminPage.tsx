@@ -31,6 +31,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box } from "@material-ui/core";
 import AdminBooking from "./AdminBooking";
+import AdminDelivery from "./AdminDelivery";
 
 const drawerWidth = 240;
 
@@ -183,7 +184,7 @@ const AdminPage: FC = () => {
             <AdminBooking/>
           </Route>
           <Route path={`${path}/delivery`}>
-            <div>delivery</div>
+            <AdminDelivery/>
           </Route>
         </Switch>
       </main>

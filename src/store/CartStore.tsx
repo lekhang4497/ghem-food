@@ -12,6 +12,7 @@ const { Provider } = cartStore;
 
 export enum CartActionType {
   UPDATE,
+  RESET,
 }
 
 interface CartAction {
@@ -49,6 +50,9 @@ const CartProvider = ({ children }: { children: any }) => {
             JSON.stringify(newItems)
           );
           return { items: newItems };
+        case CartActionType.RESET:
+          localStorage.setItem(Constant.LOCAL_STORAGE_CART, JSON.stringify({}));
+          return { items: {} };
         default:
           throw new Error();
       }

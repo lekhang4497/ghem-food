@@ -24,7 +24,7 @@ import { DISH_MAP, DishInformation } from "../../assets/dishes";
 import { Field, Form, Formik, FormikProps, useFormikContext } from "formik";
 import * as Yup from "yup";
 import AppNav from "../organisms/AppNavbar";
-import { CartContext, cartStore } from "../../store/CartStore";
+import { CartActionType, CartContext, cartStore } from "../../store/CartStore";
 import FooterSection from "../organisms/FooterSection";
 import AppButton from "../atoms/AppButton";
 import OutlinedButton from "../atoms/OutlinedButton";
@@ -113,6 +113,8 @@ const DeliveryConfirmDialog = ({
   open,
 }: DeliveryConfirmDialogProps) => {
   const history = useHistory();
+  const cartContext = useContext<CartContext>(cartStore);
+  const { cartDispatch } = cartContext;
   return (
     <Formik
       initialValues={{
@@ -132,12 +134,26 @@ const DeliveryConfirmDialog = ({
           details: Object.values(Utils.getCart()),
           phoneNumber: deliveryInfo.phone,
         };
-        const res: AxiosResponse<DeliveryResponse> = await orderDelivery(req);
-        setSubmitting(false);
-        if (res.data.code === 1) {
-          history.push(`/delivery-result/${res.data.deliveryId}`);
-        } else {
-          console.log("error delivery");
+        try {
+          const res: AxiosResponse<DeliveryResponse> = await orderDelivery(req);
+          setSubmitting(false);
+          if (res.data.code === 1) {
+            cartDispatch({
+              dishId: "",
+              quantity: 0,
+              type: CartActionType.RESET,
+            });
+            history.push(`/delivery-result/${res.data.deliveryId}`);
+          } else {
+            alert(
+              "Đặt hàng không thành công, vui lòng thử lại sau. Hoặc gọi điện để đặt hàng (+84) 377 46 03 04"
+            );
+          }
+        } catch (e) {
+          console.log("error delivery", e);
+          alert(
+            "Có lỗi xảy ra, vui lòng thử lại sau. Hoặc gọi điện để đặt hàng (+84) 377 46 03 04"
+          );
         }
       }}
     >
@@ -229,7 +245,10 @@ const CartPage = () => {
             </Table>
           </TableContainer>
           <Box textAlign="right" mt={2}>
-            <AppButton onClick={() => setDeliverDialogOpen(true)}>
+            <AppButton
+              onClick={() => setDeliverDialogOpen(true)}
+              disabled={Object.values(items).length === 0}
+            >
               Đặt hàng ngay
             </AppButton>
           </Box>

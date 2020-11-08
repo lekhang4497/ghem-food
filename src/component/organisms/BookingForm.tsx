@@ -25,6 +25,7 @@ import {
 } from "../../service/BookingService";
 import { AxiosResponse } from "axios";
 import Constant from "../../constant/Constant";
+import {useHistory} from "react-router-dom";
 
 const phoneRegExp = new RegExp(Constant.PHONE_REGEX);
 
@@ -117,6 +118,7 @@ const FormContent = () => {
 
 const BookingForm = () => {
   const [showDialog, setShowDialog] = React.useState(false);
+  const history = useHistory();
   const handleOpenDialog = () => {
     setShowDialog(true);
   };
@@ -143,11 +145,22 @@ const BookingForm = () => {
             numberOfPeople: booking.numberOfPeople,
             note: booking.note,
           };
-          const res: AxiosResponse<BookingResponse> = await bookTable(req);
-          setSubmitting(false);
-          console.log(res);
-          if (res.data.code === 1) {
-            handleOpenDialog();
+          try {
+            const res: AxiosResponse<BookingResponse> = await bookTable(req);
+            setSubmitting(false);
+            if (res.data.code === 1) {
+              history.push(`/booking-result/${res.data.bookingId}`);
+              // handleOpenDialog();
+            }else {
+              alert(
+                "Đặt bàn không thành công, vui lòng thử lại sau. Hoặc gọi điện để đặt bàn (+84) 377 46 03 04"
+              );
+            }
+          } catch (e) {
+            console.log("error booking", e);
+            alert(
+              "Có lỗi xảy ra, vui lòng thử lại sau. Hoặc gọi điện để đặt bàn (+84) 377 46 03 04"
+            );
           }
         }}
       >
