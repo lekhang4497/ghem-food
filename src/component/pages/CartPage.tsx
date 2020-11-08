@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import {
   Box,
+  CircularProgress,
   Container,
   Dialog,
   DialogContent,
@@ -27,6 +28,14 @@ import { CartContext, cartStore } from "../../store/CartStore";
 import FooterSection from "../organisms/FooterSection";
 import AppButton from "../atoms/AppButton";
 import OutlinedButton from "../atoms/OutlinedButton";
+import {
+  DeliveryInformation,
+  DeliveryRequest,
+  DeliveryResponse,
+  orderDelivery,
+} from "../../service/DeliveryService";
+import Utils from "../../constant/Utils";
+import { AxiosResponse } from "axios";
 
 const useStyles = makeStyles({
   logoInText: {
@@ -94,6 +103,7 @@ const DeliveryFormContent = () => {
           />
         </Grid>
       </Grid>
+      <Box my={2}>{isSubmitting && <CircularProgress />}</Box>
     </Form>
   );
 };
@@ -111,9 +121,24 @@ const DeliveryConfirmDialog = ({
         address: "",
       }}
       validationSchema={FormSchema}
-      onSubmit={async (deliveryInfo, { setSubmitting }) => {
+      onSubmit={async (
+        deliveryInfo: DeliveryInformation,
+        { setSubmitting }
+      ) => {
         console.log(deliveryInfo);
-        history.push("/delivery-result");
+        const req: DeliveryRequest = {
+          address: deliveryInfo.address,
+          customerName: deliveryInfo.name,
+          details: Object.values(Utils.getCart()),
+          phoneNumber: deliveryInfo.phone,
+        };
+        const res: AxiosResponse<DeliveryResponse> = await orderDelivery(req);
+        setSubmitting(false);
+        if (res.data.code === 1) {
+          history.push(`/delivery-result/${res.data.deliveryId}`);
+        } else {
+          console.log("error delivery");
+        }
       }}
     >
       {({ submitForm }: FormikProps<any>) => (

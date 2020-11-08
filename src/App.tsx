@@ -4,6 +4,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Constant from "./constant/Constant";
 import AppRoot from "./component/AppRoot";
 import ReactGA from 'react-ga';
+import {Auth0Provider} from "@auth0/auth0-react";
 ReactGA.initialize('UA-175557450-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
@@ -28,9 +29,16 @@ const theme = createMuiTheme({
 
 const App = () => (
   <div className="App">
+    <Auth0Provider
+      domain="lekhang.us.auth0.com"
+      clientId="MXkdYhSHIvgm5gEzeAOscqwOYxDyp9DE"
+      redirectUri={window.location.origin}
+    >
+
     <ThemeProvider theme={theme}>
       <AppRoot />
     </ThemeProvider>
+    </Auth0Provider>
   </div>
 );
 

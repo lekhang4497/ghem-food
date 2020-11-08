@@ -18,8 +18,8 @@ import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import AppButton from "../atoms/AppButton";
 import {
-  BookingInformation,
-  BookingRequest,
+  BookingFormValue,
+  BookingInfo,
   BookingResponse,
   bookTable,
 } from "../../service/BookingService";
@@ -133,10 +133,10 @@ const BookingForm = () => {
           bookingTime: new Date(),
         }}
         validationSchema={FormSchema}
-        onSubmit={async (booking: BookingInformation, { setSubmitting }) => {
+        onSubmit={async (booking: BookingFormValue, { setSubmitting }) => {
           setSubmitting(true);
           console.log(booking);
-          const req: BookingRequest = {
+          const req: BookingInfo = {
             phoneNumber: booking.phone,
             customerName: booking.name,
             bookingTime: booking.bookingTime.getTime(),

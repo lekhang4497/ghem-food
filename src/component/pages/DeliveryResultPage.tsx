@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import FooterSection from "../organisms/FooterSection";
 import CircleImageBox from "../atoms/CircleImageBox";
 import AppButton from "../atoms/AppButton";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
@@ -23,6 +23,7 @@ const DeliveryResultPage = () => {
   const classes = useStyles();
   const theme = useTheme();
   const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const { deliveryId } = useParams();
   return (
     <Box>
       <Box className={classes.coverGradient}>
@@ -45,7 +46,7 @@ const DeliveryResultPage = () => {
           Bạn đã đặt hàng thành công, chúc bạn ngon miệng
         </Box>
         <Box fontSize={28} mb={5}>
-          Mã đơn hàng là <b>#111</b>
+          Mã đơn hàng là <b>#{deliveryId}</b>
         </Box>
         <Box textAlign="center" mb={5}>
           <AppButton component={RouterLink} to="/">

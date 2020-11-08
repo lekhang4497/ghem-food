@@ -1,5 +1,6 @@
 import React, { createContext, Dispatch, Reducer, useReducer } from "react";
 import Constant from "../constant/Constant";
+import Utils from "../constant/Utils";
 
 export interface CartContext {
   cartState: CartState;
@@ -19,18 +20,17 @@ interface CartAction {
   quantity: number;
 }
 
-interface CartItem {
+export interface CartItem {
   dishId: string;
   quantity: number;
 }
 
-interface CartState {
+export interface CartState {
   items: Record<string, CartItem>;
 }
 
 const CartProvider = ({ children }: { children: any }) => {
-  const localStorageCart = localStorage.getItem(Constant.LOCAL_STORAGE_CART);
-  const initialItems = localStorageCart === null ? {} : JSON.parse(localStorageCart);
+  const initialItems = Utils.getCart();
   const [cartState, cartDispatch] = useReducer<Reducer<CartState, CartAction>>(
     (state: CartState, action: CartAction) => {
       switch (action.type) {
@@ -44,7 +44,10 @@ const CartProvider = ({ children }: { children: any }) => {
               quantity: action.quantity,
             };
           }
-          localStorage.setItem(Constant.LOCAL_STORAGE_CART, JSON.stringify(newItems));
+          localStorage.setItem(
+            Constant.LOCAL_STORAGE_CART,
+            JSON.stringify(newItems)
+          );
           return { items: newItems };
         default:
           throw new Error();
