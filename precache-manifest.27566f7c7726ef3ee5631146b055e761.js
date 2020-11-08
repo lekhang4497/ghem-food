@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0ffe8114e58ef1b4450ec277dd187cfb",
+    "revision": "79b1cb9d0acbbe9043bf5361a51065bc",
     "url": "/ghem-food/index.html"
   },
   {
-    "revision": "293b8f39290f4d71435d",
+    "revision": "5ca43532845d7be1e6db",
     "url": "/ghem-food/static/css/main.02696037.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ghem-food/static/js/2.6df22984.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "293b8f39290f4d71435d",
-    "url": "/ghem-food/static/js/main.dcbf7f3e.chunk.js"
+    "revision": "5ca43532845d7be1e6db",
+    "url": "/ghem-food/static/js/main.27339764.chunk.js"
   },
   {
     "revision": "25cb191937f6dfc5613a",
