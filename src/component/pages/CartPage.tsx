@@ -224,11 +224,11 @@ const CartPage = () => {
                       </TableCell>
                       <TableCell align="right">{dish.vnName}</TableCell>
                       <TableCell align="right">
-                        {`${dish.price.toLocaleString()} VND`}
+                        {Utils.toPriceString(dish.price)}
                       </TableCell>
                       <TableCell align="right">{item.quantity}</TableCell>
                       <TableCell align="right">
-                        {`${money.toLocaleString()} VND`}
+                        {Utils.toPriceString(money)}
                       </TableCell>
                     </TableRow>
                   );
@@ -238,7 +238,7 @@ const CartPage = () => {
                     <b>Tổng thanh toán</b>
                   </TableCell>
                   <TableCell align="right">
-                    <b>{`${total.toLocaleString()} VND`}</b>
+                    <b>{Utils.toPriceString(total)}</b>
                   </TableCell>
                 </TableRow>
               </TableBody>

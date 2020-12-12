@@ -3,6 +3,7 @@ import Box from "@material-ui/core/Box";
 import React from "react";
 import CircleImageBox from "./CircleImageBox";
 import { grey } from "@material-ui/core/colors";
+import Utils from "../../constant/Utils";
 
 interface MenuCardProps {
   image: string;
@@ -43,7 +44,7 @@ const FeatureMenuCard = ({ name, price, image }: MenuCardProps) => {
         {name}
       </Box>
       <Box fontWeight={600} color={Constant.COLOR_PRIMARY}>
-        {`${price.toLocaleString()} VND`}
+        {Utils.toPriceString(price)}
       </Box>
     </Box>
   );

@@ -30,6 +30,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DISH_MAP } from "../../../assets/dishes";
+import Utils from "../../../constant/Utils";
 
 const useStyles = makeStyles({
   head: {
@@ -91,13 +92,13 @@ const DeliveryRow = (props: { row: DeliveryData }) => {
                         </TableCell>
                         <TableCell>{dish.vnName}</TableCell>
                         <TableCell>
-                          {`${dish.price.toLocaleString()} VND`}
+                          {Utils.toPriceString(dish.price)}
                         </TableCell>
                         <TableCell align="center">
                           {detailRow.quantity}
                         </TableCell>
                         <TableCell align="right">
-                          {`${total.toLocaleString()} VND`}
+                          {Utils.toPriceString(total)}
                         </TableCell>
 
                       </TableRow>
@@ -108,7 +109,7 @@ const DeliveryRow = (props: { row: DeliveryData }) => {
                     <b>Tổng thanh toán</b>
                   </TableCell>
                     <TableCell align="right" >
-                      <b>{`${sum.toLocaleString()} VND`}</b>
+                      <b>{Utils.toPriceString(sum)}</b>
                     </TableCell>
                   </TableRow>
                 </TableBody>

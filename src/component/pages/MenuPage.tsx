@@ -44,6 +44,7 @@ import {
 import { green, orange, red } from "@material-ui/core/colors";
 import CircleImageBox from "../atoms/CircleImageBox";
 import { CartActionType, CartContext, cartStore } from "../../store/CartStore";
+import Utils from "../../constant/Utils";
 
 const useStyles = makeStyles({
   logoInText: {
@@ -85,7 +86,7 @@ const ChooseDishDialog = ({ onClose, dish, open }: ChooseDishDialogProps) => {
         <ListItem>
           <ListItemText
             primary={dish.vnName + " " + dish.id}
-            secondary={`${dish.price.toLocaleString()} VND`}
+            secondary={Utils.toPriceString(dish.price)}
             style={{ textAlign: "center" }}
           />
         </ListItem>
@@ -230,8 +231,12 @@ const MenuPage = () => {
                 <ButtonBase
                   style={{ width: "100%" }}
                   onClick={() => {
-                    setChooseDish(item);
-                    setOpenConfirmDialog(true);
+                    if (item.price !== 0) {
+                      setChooseDish(item);
+                      setOpenConfirmDialog(true);
+                    } else {
+                      alert("Vui lòng liên hệ nhà hàng để đặt món tiệc, SĐT: +84 377 46 03 04")
+                    }
                   }}
                 >
                   <MenuCard

@@ -856,12 +856,150 @@ const DISHES: Array<DishInformation> = [
     image: "G130",
     id: "G130L",
   },
+  {
+    price: 0,
+    "name": "Prawn in pineapple sauce",
+    "vnName": "Tôm sốt thơm",
+    "type": "party",
+    "image": "G133",
+    "id": "G133"
+  },
+  {
+    price: 0,
+    "name": "Seabass in passion fruit sauce",
+    "vnName": "Cá chẽm sốt chanh dây",
+    "type": "party",
+    "image": "G134",
+    "id": "G134"
+  },
+  {
+    price: 0,
+    "name": "Prawn in tamarind sauce",
+    "vnName": "Tôm sốt me",
+    "type": "party",
+    "image": "G135",
+    "id": "G135"
+  },
+  {
+    price: 0,
+    "name": "\"Cu hu dua\" salad with pickled pig ears ",
+    "vnName": "Gỏi củ hủ dừa tai heo",
+    "type": "party",
+    "image": "G136",
+    "id": "G136"
+  },
+  {
+    price: 0,
+    "name": "Salad with seafood",
+    "vnName": "Gỏi hải sản",
+    "type": "party",
+    "image": "G137",
+    "id": "G137"
+  },
+  {
+    price: 0,
+    "name": "Pork leg steamed with four kinds of vegetables",
+    "vnName": "Giò heo tứ quý",
+    "type": "party",
+    "image": "G138",
+    "id": "G138"
+  },
+  {
+    price: 0,
+    "name": "Pork leg steamed with shiitake mushroom",
+    "vnName": "Giò heo hầm nấm dông cô",
+    "type": "party",
+    "image": "G139",
+    "id": "G139"
+  },
+  {
+    price: 0,
+    "name": "Salad with chicken and cabbage",
+    "vnName": "Gỏi gà xé phay",
+    "type": "party",
+    "image": "G140",
+    "id": "G140"
+  },
+  {
+    price: 0,
+    "name": "Chicken grilled with salt and chilli",
+    "vnName": "Gà nướng muối",
+    "type": "party",
+    "image": "G141",
+    "id": "G141"
+  },
+  {
+    price: 0,
+    "name": "Chicken tray [roasted, salad, with bread and sticky rice]",
+    "vnName": " Gà lên mâm ",
+    "type": "party",
+    "image": "G142",
+    "id": "G142"
+  },
+  {
+    price: 0,
+    "name": "Chicken steamed with sweet fermented rice",
+    "vnName": "Gà hấp cơm rượu",
+    "type": "party",
+    "image": "G143",
+    "id": "G143"
+  },
+  {
+    price: 0,
+    "name": "Curry with duck",
+    "vnName": "Cà ri vịt",
+    "type": "party",
+    "image": "G144",
+    "id": "G144"
+  },
+  {
+    price: 0,
+    "name": "Curry with shrimp",
+    "vnName": "Cà ri tôm",
+    "type": "party",
+    "image": "G145",
+    "id": "G145"
+  },
+  {
+    price: 0,
+    "name": "Curry with chicken",
+    "vnName": "Cà ri gà",
+    "type": "party",
+    "image": "G146",
+    "id": "G146"
+  },
+  {
+    price: 0,
+    "name": "Curry with crab meat",
+    "vnName": "Cà ri cua",
+    "type": "party",
+    "image": "G147",
+    "id": "G147"
+  },
+  {
+    price: 0,
+    "name": "Snakehead fish steamed with coconut milk",
+    "vnName": "Cá lóc bó xổ hấp cốt dừa",
+    "type": "party",
+    "image": "G148",
+    "id": "G148"
+  },
+  {
+    price: 0,
+    "name": "Seabass steamed with spring onion",
+    "vnName": "Cá lóc hấp hành",
+    "type": "party",
+    "image": "G149",
+    "id": "G149"
+  }
+
 ];
 
 interface IngredientInformation {
   name: string;
   value: string;
 }
+
 const INGREDIENTS: Array<IngredientInformation> = [
   {
     name: "Gà",
@@ -968,4 +1106,4 @@ const COMBOS: Array<ComboInformation> = [
   },
 ];
 
-export { INGREDIENTS, DISHES, INGREDIENT_MAP, COMBOS, DISH_MAP };
+export {INGREDIENTS, DISHES, INGREDIENT_MAP, COMBOS, DISH_MAP};
