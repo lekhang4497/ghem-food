@@ -14,12 +14,12 @@ import {
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Constant from "../../constant/Constant";
-import React, { useContext, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Link as RouterLink } from "react-router-dom";
-import { faBars, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CartContext, cartStore } from "../../store/CartStore";
+import React, {useContext, useState} from "react";
+import {makeStyles} from "@material-ui/core/styles";
+import {Link as RouterLink} from "react-router-dom";
+import {faBars, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {CartContext, cartStore} from "../../store/CartStore";
 
 const useStyles = makeStyles({
   menuItem: {
@@ -39,7 +39,7 @@ const menu = [
     to: "/",
   },
   {
-    name: "Thực đơn",
+    name: "Thực đơn / Đặt món",
     to: "/menu",
   },
   {
@@ -57,13 +57,13 @@ const AppNav = () => {
   const theme = useTheme();
   const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
-  const { cartState } = useContext<CartContext>(cartStore);
+  const {cartState} = useContext<CartContext>(cartStore);
   return (
     <Box>
       <Container maxWidth="md">
         <Box py={2} fontFamily={Constant.FONT_FAMILY_MAIN}>
           <Grid container justify="flex-end">
-            <Grid item xs={6} container justify="flex-start">
+            <Grid item xs={4} container justify="flex-start">
               <Link component={RouterLink} to="/">
                 <img
                   src={process.env.PUBLIC_URL + "/img/logo.png"}
@@ -73,7 +73,7 @@ const AppNav = () => {
               </Link>
             </Grid>
 
-            <Grid item xs={6} container alignItems="center">
+            <Grid item xs={8} container alignItems="center">
               {/* Menu items*/}
               <Grid container spacing={4} justify="flex-end">
                 <Hidden smDown>
@@ -98,7 +98,7 @@ const AppNav = () => {
                         badgeContent={Object.keys(cartState.items).length}
                         color="error"
                       >
-                        <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+                        <FontAwesomeIcon icon={faShoppingCart} size="lg"/>
                       </Badge>
                     </Link>
                   </Grid>
@@ -106,8 +106,23 @@ const AppNav = () => {
 
                 <Hidden mdUp>
                   <Box mr={1}>
+                    <Link
+                      to="/cart"
+                      component={RouterLink}
+                    >
+                      <IconButton>
+                        <Badge
+                          badgeContent={Object.keys(cartState.items).length}
+                          color="error"
+                        >
+                          <FontAwesomeIcon icon={faShoppingCart}/>
+                        </Badge>
+                      </IconButton>
+                    </Link>
+                  </Box>
+                  <Box mr={1}>
                     <IconButton onClick={() => setOpenDrawer(true)}>
-                      <FontAwesomeIcon icon={faBars} />
+                      <FontAwesomeIcon icon={faBars}/>
                     </IconButton>
                   </Box>
                 </Hidden>
@@ -130,7 +145,7 @@ const AppNav = () => {
                 to={item.to}
                 key={item.name}
               >
-                <ListItemText primary={item.name} />
+                <ListItemText primary={item.name}/>
               </ListItem>
             ))}
           </List>

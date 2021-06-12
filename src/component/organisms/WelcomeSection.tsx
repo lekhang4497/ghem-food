@@ -83,7 +83,7 @@ const WelcomeSection = () => {
             </Box>
             <Box component="span">
               <OutlinedButton component={RouterLink} to="/menu">
-                Xem Thực Đơn
+                Thực Đơn / Đặt Món
               </OutlinedButton>
             </Box>
           </Box>

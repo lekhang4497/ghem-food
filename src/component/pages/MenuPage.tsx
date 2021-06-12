@@ -207,10 +207,10 @@ const MenuPage = () => {
           </Hidden>
           <Hidden mdUp>
             <Box mb={3}>
-              <FormControl fullWidth variant="filled">
-                <InputLabel>Loại món ăn</InputLabel>
+              <FormControl fullWidth>
+                <InputLabel id="type-select-label">Loại món ăn</InputLabel>
                 <Select
-                  native
+                  labelId="type-select-label"
                   value={ingredient}
                   onChange={(event) =>
                     setIngredient(event.target.value as string)

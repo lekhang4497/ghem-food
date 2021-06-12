@@ -1,7 +1,7 @@
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Constant from "../../constant/Constant";
-import { Typography } from "@material-ui/core";
+import {Typography, useMediaQuery, useTheme} from "@material-ui/core";
 import AppButton from "../atoms/AppButton";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,9 +26,10 @@ const useStyles = makeStyles({
 
 const AboutSection = () => {
   const classes = useStyles();
-
+  const theme = useTheme();
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
   return (
-    <Grid container spacing={6}>
+    <Grid container spacing={isSmall ? 0 : 6}>
       <Grid item md={6}>
         <img
           style={{
