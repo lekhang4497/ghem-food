@@ -13,13 +13,48 @@ const FooterSection = () => {
     >
       <Container maxWidth="md">
         <Grid container spacing={3}>
-          <Grid item md={6} container justify="flex-start">
-            <Box>
+          <Grid item md={6} container  direction="column" alignItems="flex-start">
+            <Box mb={3}>
               <img
                 src={process.env.PUBLIC_URL + "/img/logo.png"}
                 width={180}
                 alt="Ghem's logo"
               />
+            </Box>
+            <Box
+              mb={1}
+              fontWeight="bold"
+              color={Constant.TEXT_DARK}
+              textAlign="left"
+            >
+              Công ty TNHH Chương Anh
+            </Box>
+            <Box
+              mb={1}
+              color={Constant.TEXT_DARK}
+              textAlign="left"
+            >
+              Giấy CNĐKDN: 0314248097
+            </Box>
+            <Box
+              mb={1}
+              color={Constant.TEXT_DARK}
+              textAlign="left"
+            >
+              Ngày cấp 24/02/2017
+            </Box>
+            <Box
+              mb={1}
+              color={Constant.TEXT_DARK}
+              textAlign="left"
+            >
+              Cơ quan cấp: Phòng đăng ký kinh doanh Sở kế hoạch và đầu tư Thành Phố Hồ Chí Minh
+            </Box>
+            <Box
+              color={Constant.TEXT_DARK}
+              textAlign="left"
+            >
+              Địa chỉ: 103 Pasteur, Phường Bến Nghé, Quận 1, TP. HCM
             </Box>
           </Grid>
           <Grid item md={6}>
@@ -45,7 +80,7 @@ const FooterSection = () => {
               color={Constant.TEXT_SECONDARY}
               textAlign="left"
             >
-              103 Pasteur, Bến Nghé, District 1, HCM City
+              103 Pasteur, Bến Nghé, Quận 1, TP. HCM
             </Box>
             <Box
               fontWeight={600}
